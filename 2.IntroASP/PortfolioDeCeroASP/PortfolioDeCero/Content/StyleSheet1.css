@@ -1,0 +1,333 @@
+﻿body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    height: 65px;
+    background-color: #ff8a00;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    flex-direction: row;
+}
+h3 {
+    margin: 0; /* Elimina el margen predeterminado del h3 */
+    margin-right: auto; /* Mueve el h3 hacia la izquierda */
+}
+
+.menuSecciones {
+    margin-left: auto; /* Mueve el ul hacia la derecha */
+}
+
+    .menuSecciones ul {
+        list-style: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menuSecciones li {
+        margin: 0 15px;
+    }
+
+    .menuSecciones a {
+        text-decoration: none;
+        color: #F2F2F2;
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s ease-in-out;
+    }
+
+        .menuSecciones a:hover {
+            color: #e52e71;
+        }
+
+.cara {
+    border-radius: 500px;
+    height: 200px;
+}
+
+.uno {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 65px);
+    background: linear-gradient(45deg, #ff8a00, #e52e71);
+    color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+@keyframes gradientAnimation {
+    0% {
+        top: -50%;
+        left: -50%;
+    }
+
+    100% {
+        top: 50%;
+        left: 50%;
+    }
+}
+
+.navItems {
+    width: 100%; /* Opcional: Haz que la barra de navegación ocupe todo el ancho disponible */
+    clear: both; /* Limpia los flotantes y fuerza que la barra de navegación esté debajo */
+    margin-top: 20px;
+}
+
+    /* Ajusta el estilo de la barra de navegación según tus necesidades */
+    .navItems ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navItems li {
+        margin: 0 15px;
+    }
+
+    .navItems a {
+        text-decoration: none;
+        color: #F2F2F2;
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s ease-in-out;
+    }
+
+        .navItems a:hover {
+            color: #ff8a00;
+        }
+
+
+.caja-central {
+    position: relative;
+    z-index: 1;
+    margin-top: 10%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 50%;
+}
+
+.caja-cara {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    background-color: #ff8a00;
+}
+
+.caja-presentacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #F2F2F2;
+    color: #303030;
+    padding: 10px;
+}
+
+.dos {
+    background-color: #e52e71;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #303030;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.aptitudes {
+    width: 50%;
+}
+
+.tech-list {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.tech {
+    height: 90px;
+}
+
+.tres, .cuatro {
+    background-color: #303030;
+    height: 600px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    color: #F2F2F2;
+}
+
+.proyectos {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    text-align: center;
+    width: 30%;
+    border: solid #F2F2F2 1px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+    .card img {
+        width: 100%;
+    }
+
+    .card a, footer a {
+        color: white;
+    }
+
+.red-social {
+    height: 60px;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #424242;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #F2F2F2;
+    height: 250px;
+}
+
+.contacto {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 1000px) {
+    .caja-central {
+        width: 90%;
+        height: 70%;
+        flex-direction: column;
+    }
+
+    .caja-cara {
+        width: 100%;
+        height: 50%;
+    }
+
+    .caja-presentacion {
+        width: 100%;
+        height: 50%;
+        align-items: flex-start;
+    }
+
+    .aptitudes {
+        width: auto;
+    }
+
+    .dos {
+        height: auto;
+        padding: 0 10px 10px 10px;
+    }
+
+    .tres, .cuatro {
+        height: auto;
+    }
+
+    .proyectos {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 20px;
+    }
+
+    .card {
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    .red-social {
+        margin: 0 10px 0 10px;
+    }
+}
+
+/* Estilos para el formulario de contacto */
+.mainContacto {
+    background-color: #F2F2F2;
+    padding: 20px;
+}
+
+.sectionContacto {
+    margin-bottom: 20px;
+}
+
+.titulo-centrado {
+    text-align: center;
+    color: #303030;
+}
+
+#formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #303030;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+select {
+    appearance: none;
+}
+
+button {
+    background-color: #e52e71;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    button:hover {
+        background-color: #ff8a00;
+    }
+
+#textoResultado {
+    text-align: center;
+    margin-top: 20px;
+    color: #303030;
+}

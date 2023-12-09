@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="PortfolioDeCero.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Content/StyleSheet1.css" rel="stylesheet" />
+     <script src="Script/dom.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <header>
+                    <h3> ✅ Rodrigo Sebastián Bombieri </h3>
+                </header>
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="bodyContent">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        <hr />
+        <footer>
+        <h2>Contactame</h2>
+            <div class="contacto">
+                <a href="https://www.linkedin.com/in/rodrigobombieri-dev/" target="_blank">
+                    <img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" class="red-social" alt="">
+                </a>
+                <hr>
+                <a href="https://www.instagram.com/rodrigo_bombieri/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png" class="red-social" alt="">
+                </a>
+                <hr>
+                <a href="https://github.com/RodrigoBombieri" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="red-social" alt="">
+                </a>
+            </div>
+            <p style="padding-top: 30px;">Hecho con ayuda de <a href="https://maxiprograma.com" target="_blank">Maxi Programa</a></p>
+             <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+        
+    </footer>
+        </div>
+    </form>
+   </body>
+</html>
