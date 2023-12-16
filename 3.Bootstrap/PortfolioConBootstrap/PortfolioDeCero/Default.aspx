@@ -6,7 +6,7 @@
     <div class="card mx-auto mt-2" style="width: 58rem; background-color: cadetblue;">
         <div class="row no-gutters">
             <div class="col-md-5">
-                <img src="img/IMG_20230323_114543725.jpg"  class="card-img-top img-fluid" alt="Rodrigo Bombieri">
+                <asp:Image ID="imgInicio" src="img/IMG_20230323_114543725.jpg"  class="card-img-top img-fluid" alt="Rodrigo Bombieri" runat="server" />
             </div>
             <div class="col-md-7 d-flex align-items-center">
                 <div class="card-body ">
