@@ -44,7 +44,7 @@
                 <asp:HyperLink ID="hypWeatherApp" NavigateUrl="https://github.com/RodrigoBombieri/weatherApp" runat="server">
                     <asp:Image ID="imgWeatherApp" src="img/weather-app.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none ">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>App del Tiempo</h5>
                     <p>Desarrollada con HTML, CSS y Javascript.</p>
                 </div>
@@ -53,7 +53,7 @@
                 <asp:HyperLink ID="hypCalculadora" NavigateUrl="https://github.com/RodrigoBombieri/ArgentinaPrograma/tree/main/Calculadora" runat="server">
                     <asp:Image ID="imgCalculadora" src="img/calculadora.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>Calculadora</h5>
                     <p>Desarrollada con HTML, CSS y Javascript.</p>
                 </div>
@@ -62,7 +62,7 @@
                 <asp:HyperLink ID="hypEcommerce" NavigateUrl="https://github.com/RodrigoBombieri/app-E-commerce/tree/main/MiPrimerApp" runat="server">
                     <asp:Image ID="imgEcommerce" src="img/ecommerce.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>Ecommerce</h5>
                     <p>App de escritorio desarrollada con C# .Net y SQL Server.</p>
                 </div>
@@ -71,7 +71,7 @@
                 <asp:HyperLink ID="hypCocaCola" NavigateUrl="https://github.com/RodrigoBombieri/PaginaCocaC" runat="server">
                     <asp:Image ID="imgCocaCola" src="img/coca_cola.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>Réplica de Pagina de Coca Cola</h5>
                     <p>Desarrollada con HTML, CSS y Javascript.</p>
                 </div>
@@ -80,7 +80,7 @@
                 <asp:HyperLink ID="hypWeatherApp2" NavigateUrl="https://github.com/RodrigoBombieri/weatherApp" runat="server">
                     <asp:Image ID="imgWeatherApp2" src="img/weather-app.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none ">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>App del Tiempo</h5>
                     <p>Desarrollada con HTML, CSS y Javascript.</p>
                 </div>
@@ -89,7 +89,7 @@
                 <asp:HyperLink ID="hypCalculadora2" NavigateUrl="https://github.com/RodrigoBombieri/ArgentinaPrograma/tree/main/Calculadora" runat="server">
                     <asp:Image ID="imgCalculadora2" src="img/calculadora.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>Calculadora</h5>
                     <p>Desarrollada con HTML, CSS y Javascript.</p>
                 </div>
@@ -98,7 +98,7 @@
                 <asp:HyperLink ID="hypEcommerce2" NavigateUrl="https://github.com/RodrigoBombieri/app-E-commerce/tree/main/MiPrimerApp" runat="server">
                     <asp:Image ID="imgEcommerce2" src="img/ecommerce.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>Ecommerce</h5>
                     <p>App de escritorio desarrollada con C# .Net y SQL Server.</p>
                 </div>
@@ -107,7 +107,7 @@
                 <asp:HyperLink ID="hypCocaCola2" NavigateUrl="https://github.com/RodrigoBombieri/PaginaCocaC" runat="server">
                     <asp:Image ID="imgCocaCola2" src="img/coca_cola.png" CssClass="d-block w-100" runat="server" />
                 </asp:HyperLink>
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-md-block p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
                     <h5>Réplica de Pagina de Coca Cola</h5>
                     <p>Desarrollada con HTML, CSS y Javascript.</p>
                 </div>

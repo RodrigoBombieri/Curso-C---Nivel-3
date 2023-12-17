@@ -13,5 +13,14 @@ namespace PortfolioDeCero
         {
 
         }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
+        {
+            string nombre = txtNombre.Text;
+            string email = txtEmail.Text;
+            string telefono = txtTelefono.Text;
+            string mensaje = txtMensaje.Text;
+
+        }
     }
 }

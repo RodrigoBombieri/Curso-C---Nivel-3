@@ -28,33 +28,34 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <main class="mainContacto">
-        <section>
-        </section>
-        <h1 class="titulo-centrado">Formulario de Contacto</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col">
+                    <h1 class="titulo-centrado">Formulario de Contacto</h1>
+                    <div class="mb-3">
+                        <asp:Label ID="lblNombre" CssClass="form-label" runat="server" Text="Nombre y Apellido:"></asp:Label>
+                        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" placeholder="Juan Roman Riquelme" required="true"></asp:TextBox>
+                    </div>
+                    <div class="mb-3">
+                        <asp:Label ID="lblEmail" CssClass="form-label" runat="server" Text="Email"></asp:Label>
+                        <asp:TextBox ID="txtEmail" type="email" runat="server" CssClass="form-control" placeholder="name@example.com" required="true"></asp:TextBox>
+                    </div>
+                    <div class="mb-3">
+                        <asp:Label ID="lblTelefono" CssClass="form-label" runat="server" Text="Telefono "></asp:Label>
+                        <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" placeholder="01122001100" required="true"></asp:TextBox>
+                    </div>
+                    <div class="mb-3">
+                        <asp:Label ID="lblMensaje" CssClass="form-label" runat="server" Text="Mensaje "></asp:Label>
+                        <asp:TextBox ID="txtMensaje" runat="server" CssClass="form-control" placeholder="Escribe aqui lo que quieras" required="true"></asp:TextBox>
+                    </div>
 
-        <section class="sectionContacto">
-                        
-                <asp:Label ID="lblNombre" runat="server" Text="Nombre y Apellido: ">
-                </asp:Label>    
-                <asp:TextBox ID="nombre" runat="server" required="true"></asp:TextBox>       
-
-                <br>
-                <asp:Label ID="lblEmail" runat="server" Text="Email: "></asp:Label>            
-                <asp:TextBox ID="email" runat="server" required="true"></asp:TextBox>
-            
-                <br>
-                <asp:Label ID="lblTelefono" runat="server" Text="Telefono: "></asp:Label>             
-                <asp:TextBox ID="telefono" runat="server" required="true"></asp:TextBox>
-
-                <br>
-            
-            <textarea name="consulta" id="textAreaConsulta" cols="30" rows="10" required></textarea>
-                <br>
-            <button id="btnEnviar">Enviar</button>
-
-            <br>
-            <p id="textoResultado"></p>
-            <br>
-            </section>
-        </main>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        <div class="text-center">
+            <asp:Button ID="btnEnviar" CssClass="btn btn-primary" runat="server" Text="Enviar" />
+        </div>
+    </main>
 </asp:Content>
