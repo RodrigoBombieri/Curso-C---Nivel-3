@@ -27,77 +27,99 @@
     </header>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <section class="tres">
-        <h2>Mis Proyectos</h2>
-        <div class="proyectos">
-            <div class="card">
-                <h3>Weather App</h3>
-                <img src="img/weather-app.png" alt="maxiprograma.com">
-                <p>
-                    Desarrollada con HTML, CSS y Javascript.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/weatherApp" target="_blank">Ver</a>
+    <h1 class="text-center">Mis Proyectos</h1>
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <asp:HyperLink ID="hypWeatherApp" NavigateUrl="https://github.com/RodrigoBombieri/weatherApp" runat="server">
+                    <asp:Image ID="imgWeatherApp" src="img/weather-app.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none ">
+                    <h5>App del Tiempo</h5>
+                    <p>Desarrollada con HTML, CSS y Javascript.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Calculadora</h3>
-                <img src="img/calculadora.png" alt="Maxi Programa en YouTube">
-                <p>
-                    Desarrollada con HTML, CSS y Javascript.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/ArgentinaPrograma/tree/main/Calculadora" target="_blank">Ver</a>
+            <div class="carousel-item">
+                <asp:HyperLink ID="hypCalculadora" NavigateUrl="https://github.com/RodrigoBombieri/ArgentinaPrograma/tree/main/Calculadora" runat="server">
+                    <asp:Image ID="imgCalculadora" src="img/calculadora.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Calculadora</h5>
+                    <p>Desarrollada con HTML, CSS y Javascript.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Ecommerce</h3>
-                <img src="img/ecommerce.png" alt="Campus Virtual Maxi Programa">
-                <p>
-                    App de escritorio desarrollada con C# .Net y SQL Server.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/app-E-commerce/tree/main/MiPrimerApp" target="_blank">Ver</a>
+            <div class="carousel-item">
+                <asp:HyperLink ID="hypEcommerce" NavigateUrl="https://github.com/RodrigoBombieri/app-E-commerce/tree/main/MiPrimerApp" runat="server">
+                    <asp:Image ID="imgEcommerce" src="img/ecommerce.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Ecommerce</h5>
+                    <p>App de escritorio desarrollada con C# .Net y SQL Server.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Página Réplica Coca Cola</h3>
-                <img src="img/coca_cola.png" alt="Campus Virtual Maxi Programa">
-                <p>
-                    Desarrollada con HTML, CSS y Javascript.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/PaginaCocaC" target="_blank">Ver</a>
+            <div class="carousel-item">
+                <asp:HyperLink ID="hypCocaCola" NavigateUrl="https://github.com/RodrigoBombieri/PaginaCocaC" runat="server">
+                    <asp:Image ID="imgCocaCola" src="img/coca_cola.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Réplica de Pagina de Coca Cola</h5>
+                    <p>Desarrollada con HTML, CSS y Javascript.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <asp:HyperLink ID="hypWeatherApp2" NavigateUrl="https://github.com/RodrigoBombieri/weatherApp" runat="server">
+                    <asp:Image ID="imgWeatherApp2" src="img/weather-app.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none ">
+                    <h5>App del Tiempo</h5>
+                    <p>Desarrollada con HTML, CSS y Javascript.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <asp:HyperLink ID="hypCalculadora2" NavigateUrl="https://github.com/RodrigoBombieri/ArgentinaPrograma/tree/main/Calculadora" runat="server">
+                    <asp:Image ID="imgCalculadora2" src="img/calculadora.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Calculadora</h5>
+                    <p>Desarrollada con HTML, CSS y Javascript.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <asp:HyperLink ID="hypEcommerce2" NavigateUrl="https://github.com/RodrigoBombieri/app-E-commerce/tree/main/MiPrimerApp" runat="server">
+                    <asp:Image ID="imgEcommerce2" src="img/ecommerce.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Ecommerce</h5>
+                    <p>App de escritorio desarrollada con C# .Net y SQL Server.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <asp:HyperLink ID="hypCocaCola2" NavigateUrl="https://github.com/RodrigoBombieri/PaginaCocaC" runat="server">
+                    <asp:Image ID="imgCocaCola2" src="img/coca_cola.png" CssClass="d-block w-100" runat="server" />
+                </asp:HyperLink>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Réplica de Pagina de Coca Cola</h5>
+                    <p>Desarrollada con HTML, CSS y Javascript.</p>
+                </div>
             </div>
         </div>
-    </section>
-    <section class="cuatro">
-        <div class="proyectos">
-            <div class="card">
-                <h3>Weather App</h3>
-                <img src="img/weather-app.png" alt="maxiprograma.com">
-                <p>
-                    Desarrollada con HTML, CSS y Javascript.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/weatherApp" target="_blank">Ver</a>
-            </div>
-            <div class="card">
-                <h3>Calculadora</h3>
-                <img src="img/calculadora.png" alt="Maxi Programa en YouTube">
-                <p>
-                    Desarrollada con HTML, CSS y Javascript.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/ArgentinaPrograma/tree/main/Calculadora" target="_blank">Ver</a>
-            </div>
-            <div class="card">
-                <h3>Ecommerce</h3>
-                <img src="img/ecommerce.png" alt="Campus Virtual Maxi Programa">
-                <p>
-                    App de escritorio desarrollada con C# .Net y SQL Server.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/app-E-commerce/tree/main/MiPrimerApp" target="_blank">Ver</a>
-            </div>
-            <div class="card">
-                <h3>Página Réplica Coca Cola</h3>
-                <img src="img/coca_cola.png" alt="Campus Virtual Maxi Programa">
-                <p>
-                    Desarrollada con HTML, CSS y Javascript.
-                </p>
-                <a href="https://github.com/RodrigoBombieri/PaginaCocaC" target="_blank">Ver</a>
-            </div>
-        </div>
-    </section>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </asp:Content>
