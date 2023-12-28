@@ -23,11 +23,20 @@ namespace ejemploEventos
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string nombre = txtMensaje.Text;
+            string nombre = txtNombre.Text;
+            string pass = txtPassword.Text;
             lblMensaje.Text = "Hola " + nombre;
 
-            /// Redireccionar a otra página con un parámetro en la URL
-            Response.Redirect("Default.aspx?nombre=" + nombre, false);
+            /// Session es un objeto que permite almacenar información en el servidor
+            /// y usarlo en cualquier página del sitio web
+            Session.Add("usuario", nombre);
+            Session.Add("pass", pass);
+ 
+            /// Redireccionar a otra página CON un parámetro en la URL
+            /// Response.Redirect("Default.aspx?nombre=" + nombre + "&pass=" + txtPassword.Text, false);
+
+            /// Redireccionar a otra página SIN mostrar los parámetros en la URL
+            Response.Redirect("Default.aspx", false);
         }
 
         protected void lblMensaje_TextChanged(object sender, EventArgs e)
