@@ -22,6 +22,8 @@ namespace ejemploDeGrilla
             /// Con esto verifico que el ID en la URL sea valido 
             if (Request.QueryString["id"] != null)
             {
+                /// Si entró Significa que vengo desde el boton Seleccionar con un ID precargado
+                
                 /// Guardamos el ID en una variable
                 int id = int.Parse(Request.QueryString["id"].ToString());
                 /// Me traigo de la Session, la lista temporal de autos
@@ -43,6 +45,13 @@ namespace ejemploDeGrilla
                 chkUsado.Checked = seleccionado.Usado;
 
                 rdbImportado.Checked = seleccionado.Importado;
+                /// Si venimos desde el boton Seleccionar de la grilla, el boton Aceptar se deshabilita
+                btnAceptar.Enabled=false;
+            }
+            else
+            {
+                btnModificar.Enabled = false;
+                btnEliminar.Enabled = false;
             }
         }
 
@@ -68,6 +77,7 @@ namespace ejemploDeGrilla
                 a.Importado = false;
             }
             /// -----> Ya tengo el auto cargado <------
+            
 
             /// Recuperamos la lista de la Session para poder agregarle un elemento
             /// Con esto transformamos la lista de autos en una lista de autos con un casteo explicito 
@@ -80,7 +90,7 @@ namespace ejemploDeGrilla
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

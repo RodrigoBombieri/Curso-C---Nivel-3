@@ -21,6 +21,23 @@
                 </Columns>
             </asp:GridView>
             <a href="AutoForm.aspx" class="btn btn-primary">Agregar</a>
+            <asp:Button ID="btnBuscar" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscar_Click" runat="server"/>
+            <asp:TextBox ID="txtIDBuscar" cssclass="form-control" runat="server"></asp:TextBox>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <asp:GridView ID="dgvDireccion" DataKeyNames="Id" OnSelectedIndexChanged="dgvDireccion_SelectedIndexChanged" runat="server" CssClass="table table-primary table-bordered table-responsive-md-4" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField HeaderText="Id" DataField="Id" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
+                    <asp:BoundField HeaderText="Calle" DataField="Calle" />
+                    <asp:BoundField HeaderText="Numero" DataField="Numero" />
+                    <asp:CommandField ShowSelectButton="true" SelectText="Seleccionar" HeaderText="Accion" />
+                </Columns>
+            </asp:GridView>
+            <a href="FormPractica.aspx" class="btn btn-primary">Agregar</a>
+            <asp:Button ID="btnBuscarDireccion" CssClass="btn btn-primary" Text="Buscar" OnClick="btnBuscarDireccion_Click" runat="server" />
+            <asp:TextBox ID="txtIDDireccionBuscar" cssclass="form-control" runat="server"></asp:TextBox>
         </div>
     </div>
 </asp:Content>

@@ -27,6 +27,17 @@ namespace ejemploDeGrilla
             dgvAutos.DataSource = Session["listaAutos"];
             /// Con el databind se le asigna el datasource al datagridview y arma la grilla
             dgvAutos.DataBind();
+
+
+
+            if (Session["listaDireccion"] == null)
+            {
+                DireccionNegocio negocio = new DireccionNegocio();
+                Session.Add("listaDireccion", negocio.listar());
+            }
+
+            dgvDireccion.DataSource = Session["listaDireccion"];
+            dgvDireccion.DataBind();
         }
 
         protected void dgvAutos_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,6 +49,27 @@ namespace ejemploDeGrilla
             /// Redireccionamos a la pagina de AutoForm.aspx con el id del elemento seleccionado
             /// para poder usar ese id en el formulario de AutoForm.aspx
             Response.Redirect("AutoForm.aspx?id=" + id);
+        }
+
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            /// Guardamos en una variable el ID a buscar ingresado por el usuario
+            int IDBuscar = int.Parse(txtIDBuscar.Text);
+            /// Redirecciono a la pagina de AutoForm.aspx con el ID a buscar
+            Response.Redirect("AutoForm.aspx?id=" + IDBuscar);
+        }
+
+        protected void btnBuscarDireccion_Click(object sender, EventArgs e)
+        {
+            int IDBuscar = int.Parse(txtIDDireccionBuscar.Text);
+            Response.Redirect("FormPractica.aspx?id=" + IDBuscar);
+        }
+
+        protected void dgvDireccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvDireccion.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormPractica.aspx?id=" + id);
         }
     }
 }
