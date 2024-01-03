@@ -80,6 +80,7 @@ namespace negocioP
                 // seteamos con la consulta que armamos arriba.
                 //datos.setearConsulta(consulta);
 
+                /// Usamos el stored procedure para mayor seguridad, y para que no se vea la consulta en el código.
                 datos.setearProcedimiento("storedListar");
                 datos.ejecutarLectura();
 
