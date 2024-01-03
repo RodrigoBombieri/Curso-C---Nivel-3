@@ -76,15 +76,11 @@ namespace negocioP
             try
             {
                 // copiamos la consulta ORIGINAL a la DB y le agregamos And y dejamos un espacio al final para concatenar los nuevos filtros Avanzados.
-                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1";
-
-                // preguntamos que contenido tiene el campo, y según lo que tenga, con el switch filtramos lo que se escriba en el txt.
-                // para filtrar por texto usando el comienza con, termina con o contiene, usamos el comodín %, y lo concatenamos con el filtro
-                // el comodín también nos sirve por si no escribimos nada en la txtFiltro, en lugar de romperse, muestra la lista entera.
-                
-  
+                //string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1";             
                 // seteamos con la consulta que armamos arriba.
-                datos.setearConsulta(consulta);
+                //datos.setearConsulta(consulta);
+
+                datos.setearProcedimiento("storedListar");
                 datos.ejecutarLectura();
 
                 //lo copiamos del método listar, reemplazando lector por datos.Lector
