@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokedex-web", "pokedex-web\pokedex-web.csproj", "{CD8C9CF0-0668-4FC0-844F-5474E11C9156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominioP", "dominioP\dominioP.csproj", "{A3D11397-8D8A-4996-8D9A-2A02E82C76A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocioP", "negocioP\negocioP.csproj", "{2FC661A1-F41D-433A-BD98-8B4D7DD7EC17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD8C9CF0-0668-4FC0-844F-5474E11C9156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD8C9CF0-0668-4FC0-844F-5474E11C9156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD8C9CF0-0668-4FC0-844F-5474E11C9156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD8C9CF0-0668-4FC0-844F-5474E11C9156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D11397-8D8A-4996-8D9A-2A02E82C76A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D11397-8D8A-4996-8D9A-2A02E82C76A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D11397-8D8A-4996-8D9A-2A02E82C76A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D11397-8D8A-4996-8D9A-2A02E82C76A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FC661A1-F41D-433A-BD98-8B4D7DD7EC17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC661A1-F41D-433A-BD98-8B4D7DD7EC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC661A1-F41D-433A-BD98-8B4D7DD7EC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC661A1-F41D-433A-BD98-8B4D7DD7EC17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1733998F-6F1B-494F-9A9A-25C8CFA56E4A}
+	EndGlobalSection
+EndGlobal

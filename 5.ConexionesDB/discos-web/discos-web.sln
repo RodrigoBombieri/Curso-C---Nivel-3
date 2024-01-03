@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "discos-web", "discos-web\discos-web.csproj", "{DFA198ED-7F3E-4AA2-BBF2-7B41711C0F5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominioD", "dominioD\dominioD.csproj", "{B3CFD07D-390C-4585-932C-5A48FAC527FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocioD", "negocioD\negocioD.csproj", "{C420C10D-CA3E-4386-9C82-E2D0DBEED2DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFA198ED-7F3E-4AA2-BBF2-7B41711C0F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA198ED-7F3E-4AA2-BBF2-7B41711C0F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA198ED-7F3E-4AA2-BBF2-7B41711C0F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA198ED-7F3E-4AA2-BBF2-7B41711C0F5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3CFD07D-390C-4585-932C-5A48FAC527FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3CFD07D-390C-4585-932C-5A48FAC527FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3CFD07D-390C-4585-932C-5A48FAC527FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3CFD07D-390C-4585-932C-5A48FAC527FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C420C10D-CA3E-4386-9C82-E2D0DBEED2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C420C10D-CA3E-4386-9C82-E2D0DBEED2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C420C10D-CA3E-4386-9C82-E2D0DBEED2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C420C10D-CA3E-4386-9C82-E2D0DBEED2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9AEC63D-E7A2-412F-9BEF-EC7ED7D6F4CF}
+	EndGlobalSection
+EndGlobal
