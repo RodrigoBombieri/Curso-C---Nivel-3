@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="DetalleDisco.aspx" />
     <Content Include="DiscosLista.aspx" />
     <Content Include="DiscosListaForeach.aspx" />
     <Content Include="Global.asax" />
@@ -80,6 +81,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleDisco.aspx.cs">
+      <DependentUpon>DetalleDisco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleDisco.aspx.designer.cs">
+      <DependentUpon>DetalleDisco.aspx</DependentUpon>
     </Compile>
     <Compile Include="DiscosLista.aspx.cs">
       <DependentUpon>DiscosLista.aspx</DependentUpon>

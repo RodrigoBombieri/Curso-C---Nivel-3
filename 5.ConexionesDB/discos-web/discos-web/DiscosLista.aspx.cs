@@ -16,5 +16,11 @@ namespace discos_web
             dgvDiscos.DataSource = negocio.listarConSP();
             dgvDiscos.DataBind();
         }
+
+        protected void dgvDiscos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvDiscos.SelectedDataKey.Value.ToString();
+            Response.Redirect("DetalleDisco.aspx?id=" + id);
+        }
     }
 }

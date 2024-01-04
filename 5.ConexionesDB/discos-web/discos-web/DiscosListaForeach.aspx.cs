@@ -16,6 +16,12 @@ namespace discos_web
         {
             DiscoNegocio negocio = new DiscoNegocio();
             listaDiscos = negocio.listarConSP();
+
+            if(!IsPostBack)
+            {
+                repRepeater.DataSource = listaDiscos;
+                repRepeater.DataBind();
+            }
         }
     }
 }
