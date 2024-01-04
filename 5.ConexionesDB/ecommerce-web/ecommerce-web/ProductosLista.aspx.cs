@@ -16,5 +16,11 @@ namespace ecommerce_web
             dgvProductos.DataSource = negocio.listarConSP();
             dgvProductos.DataBind();
         }
+
+        protected void dgvProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvProductos.SelectedDataKey.Value.ToString();
+            Response.Redirect("ProductoDetalle.aspx?id=" + id);
+        }
     }
 }

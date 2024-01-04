@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="ProductoDetalle.aspx" />
     <Content Include="ProductosLista.aspx" />
     <Content Include="ProductosListaForeach.aspx" />
     <Content Include="Web.config" />
@@ -83,6 +84,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoDetalle.aspx.cs">
+      <DependentUpon>ProductoDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductoDetalle.aspx.designer.cs">
+      <DependentUpon>ProductoDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductosLista.aspx.cs">
       <DependentUpon>ProductosLista.aspx</DependentUpon>

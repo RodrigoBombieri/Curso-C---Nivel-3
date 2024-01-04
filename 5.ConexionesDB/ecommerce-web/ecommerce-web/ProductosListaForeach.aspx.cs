@@ -16,6 +16,12 @@ namespace ecommerce_web
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaProductos = negocio.listarConSP();
+
+            if(!IsPostBack)
+            {
+                repRepeater.DataSource = listaProductos;
+                repRepeater.DataBind();
+            }
         }
     }
 }
