@@ -72,6 +72,7 @@ namespace negocioD
                 //string consulta = "Select Titulo, CantidadCanciones, UrlImagenTapa, E.Descripcion Estilo, T.Descripcion Edicion, D.IdEstilo, D.IdTipoEdicion, D.Id from DISCOS D, ESTILOS E, TIPOSEDICION T where D.IdEstilo = E.Id and D.IdTipoEdicion = T.Id And ";
 
                 //datos.setearConsulta(consulta);
+                /// Usamos el Stored Procedure para mayor seguridad al manipular la consulta a la DB
                 datos.setearProcedimiento("storedListar");
                 datos.ejecutarLectura();
 
