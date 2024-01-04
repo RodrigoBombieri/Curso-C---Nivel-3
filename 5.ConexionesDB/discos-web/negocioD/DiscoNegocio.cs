@@ -62,6 +62,49 @@ namespace negocioD
 
         }
 
+        public List<Disco> listarConSP()
+        {
+            List<Disco> lista = new List<Disco>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //string consulta = "Select Titulo, CantidadCanciones, UrlImagenTapa, E.Descripcion Estilo, T.Descripcion Edicion, D.IdEstilo, D.IdTipoEdicion, D.Id from DISCOS D, ESTILOS E, TIPOSEDICION T where D.IdEstilo = E.Id and D.IdTipoEdicion = T.Id And ";
+
+                //datos.setearConsulta(consulta);
+                datos.setearProcedimiento("storedListar");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Disco aux = new Disco();
+
+                    aux.Titulo = (string)datos.Lector["Titulo"];
+                    aux.CantidadCanciones = datos.Lector.GetInt32(1);
+                    aux.Id = (int)datos.Lector["Id"];
+                    if (!(datos.Lector["UrlImagenTapa"] is DBNull))
+                        aux.UrlImagenTapa = (string)datos.Lector["UrlImagenTapa"];
+                    aux.Estilo = new Estilo();
+                    aux.Estilo.Id = (int)datos.Lector["IdEstilo"];
+                    aux.Estilo.Descripcion = (string)datos.Lector["Estilo"];
+                    aux.Edicion = new Edicion();
+                    aux.Edicion.Id = (int)datos.Lector["IdTipoEdicion"];
+                    aux.Edicion.Descripcion = (string)datos.Lector["Edicion"];
+
+
+                    lista.Add(aux);
+
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public void agregar(Disco nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
