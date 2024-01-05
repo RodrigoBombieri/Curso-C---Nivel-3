@@ -16,5 +16,19 @@ namespace pokedex_web
             dgvPokemons.DataSource = negocio.listarConSP();
             dgvPokemons.DataBind();
         }
+
+        protected void dgvPokemons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvPokemons.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioPokemon.aspx?id=" + id);
+        }
+
+        protected void dgvPokemons_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            /// Para que funcione la paginación, hay que agregar la propiedad AllowPaging="True" en el 
+            /// GridView, entonces el evento PageIndexChanging se dispara cuando se cambia de página.
+            dgvPokemons.PageIndex = e.NewPageIndex;
+            dgvPokemons.DataBind();
+        }
     }
 }
