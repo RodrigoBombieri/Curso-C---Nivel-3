@@ -71,6 +71,7 @@
     <Content Include="DetalleDisco.aspx" />
     <Content Include="DiscosLista.aspx" />
     <Content Include="DiscosListaForeach.aspx" />
+    <Content Include="FormularioDisco.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -102,6 +103,13 @@
     </Compile>
     <Compile Include="DiscosListaForeach.aspx.designer.cs">
       <DependentUpon>DiscosListaForeach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioDisco.aspx.cs">
+      <DependentUpon>FormularioDisco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormularioDisco.aspx.designer.cs">
+      <DependentUpon>FormularioDisco.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

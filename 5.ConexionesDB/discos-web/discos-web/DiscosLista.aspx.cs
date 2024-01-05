@@ -20,7 +20,13 @@ namespace discos_web
         protected void dgvDiscos_SelectedIndexChanged(object sender, EventArgs e)
         {
             var id = dgvDiscos.SelectedDataKey.Value.ToString();
-            Response.Redirect("DetalleDisco.aspx?id=" + id);
+            Response.Redirect("FormularioDisco.aspx?id=" + id);
+        }
+
+        protected void dgvDiscos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvDiscos.PageIndex = e.NewPageIndex;
+            dgvDiscos.DataBind();
         }
     }
 }
