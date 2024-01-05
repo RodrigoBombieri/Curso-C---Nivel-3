@@ -3,7 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Lista de Productos con Store Procedure</h1>
-    <asp:GridView ID="dgvProductos" DataKeyNames="Id" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" CssClass="table" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="dgvProductos" DataKeyNames="Id" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" 
+        CssClass="table" AutoGenerateColumns="false" 
+        OnPageIndexChanging="dgvProductos_PageIndexChanging"
+        AllowPaging="true" PageSize="5" runat="server">
         <Columns>
             <asp:BoundField DataField="Codigo" HeaderText="Codigo" />
             <asp:BoundField DataField="Nombre" HeaderText="Codigo" />
@@ -13,6 +16,8 @@
             <asp:ImageField DataImageUrlField="UrlImagen" ControlStyle-Height="100px" ControlStyle-Width="100px" HeaderText="Imagen" />
             <asp:BoundField DataField="Precio" HeaderText="Precio" />
             <asp:CommandField ShowSelectButton="true" SelectText="Ver Detalle"  HeaderText="Ver Detalle"/>
+            <asp:CommandField ShowSelectButton="true" SelectText="✍︎"  HeaderText="Accion"/>
         </Columns>
     </asp:GridView>
+    <a href="FormularioProducto.aspx" class="btn btn-primary">Nuevo Producto</a>
 </asp:Content>

@@ -20,7 +20,13 @@ namespace ecommerce_web
         protected void dgvProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
             var id = dgvProductos.SelectedDataKey.Value.ToString();
-            Response.Redirect("ProductoDetalle.aspx?id=" + id);
+            Response.Redirect("FormularioProducto.aspx?id=" + id);
+        }
+
+        protected void dgvProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvProductos.PageIndex = e.NewPageIndex;
+            dgvProductos.DataBind();
         }
     }
 }
