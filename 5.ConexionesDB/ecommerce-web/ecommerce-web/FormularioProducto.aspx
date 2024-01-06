@@ -33,7 +33,7 @@
 
             <div class="mb-3">
                 <asp:Button ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" Text="Aceptar" />
-                <a href="ProductosLista.aspx" class="btn btn-danger">Cancelar</a>
+                <a href="ProductosLista.aspx">Cancelar</a>
             </div>
         </div>
         <div class="col-6">
@@ -46,12 +46,29 @@
                 <ContentTemplate>
                     <div class="mb-3">
                         <label for="txtUrlImagen" class="form-label">UrlImagen: </label>
-                        <asp:TextBox ID="txtUrlImagen" runat="server" AutoPostBack="true" 
+                        <asp:TextBox ID="txtUrlImagen" runat="server" AutoPostBack="true"
                             OnTextChanged="txtUrlImagen_TextChanged"
                             CssClass="form-control" />
                     </div>
-                        <asp:Image ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
-                            ID="imgProducto" runat="server" Width="60%" />
+                    <asp:Image ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
+                        ID="imgProducto" runat="server" Width="60%" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger" OnClick="btnEliminar_Click" Text="Eliminar" />
+                    </div>
+                    <%if (confirmaEliminar) { %>
+                    <div class="mb-3">
+                        <asp:CheckBox ID="chkConfirmaEliminar" runat="server" Text="Confirma Eliminacion" />
+                        <asp:Button ID="btnConfirmaEliminar" runat="server" CssClass="btn btn-outline-danger" OnClick="btnConfirmaEliminar_Click" Text="Eliminar" />
+                    </div>
+                    <%} %>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

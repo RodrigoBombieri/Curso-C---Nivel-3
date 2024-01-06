@@ -11,9 +11,11 @@ namespace ecommerce_web
 {
     public partial class FormularioProducto : System.Web.UI.Page
     {
+        public bool confirmaEliminar { get;set;}
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            confirmaEliminar = false;
             try
             {
                 if (!IsPostBack)
@@ -104,6 +106,30 @@ namespace ecommerce_web
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             imgProducto.ImageUrl = txtUrlImagen.Text;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            confirmaEliminar = true;
+        }
+
+        protected void btnConfirmaEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(chkConfirmaEliminar.Checked)
+                {
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    negocio.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("ProductosLista.aspx");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
         }
     }
 }
