@@ -11,7 +11,7 @@ namespace negocio
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> listar()
+        public List<Articulo> listar(string id = "")
         {
             List<Articulo> lista = new List<Articulo>();
             SqlConnection conexion = new SqlConnection();
@@ -22,7 +22,13 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, A.IdMarca, A.IdCategoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca = M.Id and A.IdCategoria = C.Id";
+                comando.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, A.IdMarca, A.IdCategoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca = M.Id and A.IdCategoria = C.Id ";
+                
+                if(id != "")
+                {
+                    comando.CommandText += " and A.Id = " + id;
+                }
+
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -188,6 +194,36 @@ namespace negocio
             }
         }
 
+        public void modificarConSP(Articulo artic)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //datos.setearConsulta("Update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @urlImagen, Precio = @precio Where Id = @id");
+                datos.setearProcedimiento("storedModificarArticulo");
+                datos.setearParametro("@codigo", artic.Codigo);
+                datos.setearParametro("@nombre", artic.Nombre);
+                datos.setearParametro("@descripcion", artic.Descripcion);
+                datos.setearParametro("@idMarca", artic.Marca.Id);
+                datos.setearParametro("@idCategoria", artic.Categoria.Id);
+                datos.setearParametro("@img", artic.UrlImagen);
+                datos.setearParametro("@precio", artic.Precio);
+                datos.setearParametro("@id", artic.Id);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void eliminar(int id)
         {
             try

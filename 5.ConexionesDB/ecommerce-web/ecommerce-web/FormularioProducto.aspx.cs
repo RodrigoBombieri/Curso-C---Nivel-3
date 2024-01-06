@@ -33,6 +33,25 @@ namespace ecommerce_web
                     ddlMarca.DataTextField = "Descripcion";
                     ddlMarca.DataBind();
                 }
+
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+
+                if (id != "" && !IsPostBack)
+                {
+                    ArticuloNegocio negocio = new ArticuloNegocio();
+                    Articulo seleccionado = (negocio.listar(id))[0];
+
+                    txtId.Text = id;
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtCodigo.Text = seleccionado.Codigo;
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    txtUrlImagen.Text = seleccionado.UrlImagen;
+                    imgProducto.ImageUrl = seleccionado.UrlImagen;
+                    txtPrecio.Text = seleccionado.Precio.ToString();
+
+                    ddlCategoria.SelectedValue = seleccionado.Categoria.Id.ToString();
+                    ddlMarca.SelectedValue = seleccionado.Marca.Id.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -62,7 +81,15 @@ namespace ecommerce_web
                 nuevo.Marca = new Marca();
                 nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
 
-                negocio.agregarConSP(nuevo);
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificarConSP(nuevo);
+                }
+                else
+                {
+                    negocio.agregarConSP(nuevo);
+                }
                 Response.Redirect("ProductosLista.aspx");
 
             }
