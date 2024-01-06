@@ -16,6 +16,7 @@ namespace discos_web
             txtId.Enabled = false;
             try
             {
+                /// Configuracion de la pantalla
                 if (!IsPostBack)
                 {
                     EdicionNegocio edicionNegocio = new EdicionNegocio();
@@ -33,6 +34,27 @@ namespace discos_web
                     ddlEstilo.DataTextField = "Descripcion";
                     ddlEstilo.DataBind();
                 }
+
+                /// MODIFICACION DE DISCO
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (id != "" && !IsPostBack)
+                {
+                    DiscoNegocio negocio = new DiscoNegocio();
+                    List<Disco> lista = negocio.listar(id);
+                    Disco seleccionado = lista[0];
+
+                    /// precargar los campos
+                    txtId.Text = id;
+                    txtTitulo.Text = seleccionado.Titulo;
+                    txtCantidadCanciones.Text = seleccionado.CantidadCanciones.ToString();
+                    txtUrlImagen.Text = seleccionado.UrlImagenTapa;
+                    imgDisco.ImageUrl = seleccionado.UrlImagenTapa;
+
+                    ddlEdicion.SelectedValue = seleccionado.Edicion.Id.ToString();
+                    ddlEstilo.SelectedValue = seleccionado.Estilo.Id.ToString();
+
+                }
+                
 
             }
             catch (Exception ex)
@@ -62,7 +84,15 @@ namespace discos_web
                 nuevo.Estilo = new Estilo();
                 nuevo.Estilo.Id = int.Parse(ddlEstilo.SelectedValue);
 
-                negocio.agregarConSP(nuevo);
+                if (Request.QueryString["id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificarConSP(nuevo);
+                }
+                else
+                {
+                    negocio.agregarConSP(nuevo);
+                }
                 Response.Redirect("DiscosLista.aspx");
 
             }

@@ -13,7 +13,7 @@ namespace negocioD
 {
     public class DiscoNegocio
     {
-        public List<Disco> listar()
+        public List<Disco> listar(string id = "")
         {
             List<Disco> lista = new List<Disco>();
             SqlConnection conexion = new SqlConnection();
@@ -24,7 +24,12 @@ namespace negocioD
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=DISCOS_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Titulo, CantidadCanciones, UrlImagenTapa, E.Descripcion Estilo, T.Descripcion Edicion, D.IdEstilo, D.IdTipoEdicion, D.Id from DISCOS D, ESTILOS E, TIPOSEDICION T where D.IdEstilo = E.Id and D.IdTipoEdicion = T.Id";
+                comando.CommandText = "Select Titulo, CantidadCanciones, UrlImagenTapa, E.Descripcion Estilo, T.Descripcion Edicion, D.IdEstilo, D.IdTipoEdicion, D.Id from DISCOS D, ESTILOS E, TIPOSEDICION T where D.IdEstilo = E.Id and D.IdTipoEdicion = T.Id ";
+                if(id != "")
+                {
+                    /// Con esta validacion va a devolver un objeto lista, con un solo elemento
+                    comando.CommandText += " and D.Id = " + id;
+                }
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -181,6 +186,32 @@ namespace negocioD
             }
         }
 
+        public void modificarConSP(Disco disco)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //datos.setearConsulta("update DISCOS set Titulo = @titulo, CantidadCanciones = @cantCanciones, UrlImagenTapa = @urlTapa, IdEstilo = @idEstilo, IdTipoEdicion = @idTipoEdicion Where Id = @id");
+                datos.setearProcedimiento("storedModificarPokemon");
+                datos.setearParametro("@titulo", disco.Titulo);
+                datos.setearParametro("@cantCanciones", disco.CantidadCanciones);
+                datos.setearParametro("@urlTapa", disco.UrlImagenTapa);
+                datos.setearParametro("@idEstilo", disco.Estilo.Id);
+                datos.setearParametro("@idTipoEdicion", disco.Edicion.Id);
+                datos.setearParametro("@id", disco.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void eliminar(int id)
         {
             try
