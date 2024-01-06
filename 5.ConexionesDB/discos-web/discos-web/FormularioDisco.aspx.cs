@@ -11,9 +11,11 @@ namespace discos_web
 {
     public partial class FormularioDisco : System.Web.UI.Page
     {
+        public bool confirmaEliminar {  get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            confirmaEliminar = false;
             try
             {
                 /// Configuracion de la pantalla
@@ -108,6 +110,29 @@ namespace discos_web
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
             imgDisco.ImageUrl = txtUrlImagen.Text;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            confirmaEliminar = true;
+        }
+
+        protected void btnConfirmaEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkConfirmaEliminar.Checked)
+                {
+                    DiscoNegocio negocio = new DiscoNegocio();
+                    negocio.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("DiscosLista.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
         }
     }
 }

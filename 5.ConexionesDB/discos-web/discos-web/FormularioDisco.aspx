@@ -30,7 +30,7 @@
 
             <div class="mb-3">
                 <asp:Button ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" Text="Aceptar" />
-                <a href="DiscosLista.aspx" class="btn btn-danger">Cancelar</a>
+                <a href="DiscosLista.aspx">Cancelar</a>
             </div>
         </div>
         <div class="col-6">
@@ -44,6 +44,23 @@
                     </div>
                     <asp:Image ID="imgDisco" ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
                         Width="60%" runat="server" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" CssClass="btn btn-danger" Text="Eliminar" />
+                    </div>
+                    <%if (confirmaEliminar) {%>
+                    <div class="mb-3">
+                        <asp:CheckBox ID="chkConfirmaEliminar" Text="Confirmar Eliminacion" runat="server" />
+                        <asp:Button ID="btnConfirmaEliminar" runat="server" OnClick="btnConfirmaEliminar_Click" CssClass="btn btn-outline-danger" Text="Eliminar" />
+                    </div>
+                    <%} %>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
