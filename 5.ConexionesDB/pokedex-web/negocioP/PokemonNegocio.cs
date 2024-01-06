@@ -31,7 +31,7 @@ namespace negocioP
                 comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1 ";
                 if(id != "")
                 {
-                    /// Si el id no es vacío, agregamos el filtro a la consulta.
+                    /// Si trae un id, agregamos el filtro a la consulta.
                     /// va a devolver del listado un solo pokemon, el que tenga el id que le pasamos.
                     comando.CommandText += " and P.Id = " + id;
                 }   

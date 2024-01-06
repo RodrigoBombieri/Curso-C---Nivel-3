@@ -35,7 +35,11 @@ namespace pokedex_web
                 }
 
                 /// Configuracion si estamos MODIFICANDO un pokemon
+                /// guardamos en la variable id el id que viene por querystring en caso de que sea 
+                /// valido, sino guardamos un string vacio
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                /// Si el id es distinto de vacio y no es un postback, es decir, 
+                /// si no se esta recargando la pagina, ingresamos al if
                 if (id != "" && !IsPostBack)
                 {
                     PokemonNegocio negocio = new PokemonNegocio();
@@ -45,7 +49,7 @@ namespace pokedex_web
                     /// va a guardar en la variable seleccionado el primer elemento de la lista
                     Pokemon seleccionado = (negocio.listar(id))[0];
 
-                    /// pre cargamos los campos del formulario
+                    /// Pre cargamos los campos del formulario
                     txtId.Text = id;
                     txtNumero.Text = seleccionado.Numero.ToString();
                     txtNombre.Text = seleccionado.Nombre;
