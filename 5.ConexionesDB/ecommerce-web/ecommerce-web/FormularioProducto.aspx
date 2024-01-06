@@ -19,16 +19,12 @@
                 <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="mb-3">
-                <label for="txtDescripcion" class="form-label">Descripcion: </label>
-                <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" CssClass="form-control"></asp:TextBox>
+                <label for="ddlMarca" class="form-label">Marca: </label>
+                <asp:DropDownList ID="ddlMarca" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
             <div class="mb-3">
-                <label for="txtMarca" class="form-label">Marca: </label>
-                <asp:DropDownList ID="txtMarca" CssClass="form-select" runat="server"></asp:DropDownList>
-            </div>
-            <div class="mb-3">
-                <label for="txtCategoria" class="form-label">Categoria: </label>
-                <asp:DropDownList ID="txtCategoria" CssClass="form-select" runat="server"></asp:DropDownList>
+                <label for="ddlCategoria" class="form-label">Categoria: </label>
+                <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio: </label>
@@ -39,8 +35,25 @@
                 <asp:Button ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" Text="Aceptar" />
                 <a href="ProductosLista.aspx" class="btn btn-danger">Cancelar</a>
             </div>
-
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="txtDescripcion" class="form-label">Descripcion: </label>
+                <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <asp:ScriptManager runat="server" />
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <label for="txtUrlImagen" class="form-label">UrlImagen: </label>
+                        <asp:TextBox ID="txtUrlImagen" runat="server" AutoPostBack="true" 
+                            OnTextChanged="txtUrlImagen_TextChanged"
+                            CssClass="form-control" />
+                    </div>
+                        <asp:Image ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
+                            ID="imgProducto" runat="server" Width="60%" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
-
 </asp:Content>
