@@ -17,6 +17,7 @@ namespace pokedex_web
             txtId.Enabled = false;
             try
             {
+                /// Configuracion inicial de la pantalla
                 if (!IsPostBack)
                 {
                     ElementoNegocio negocio = new ElementoNegocio();
@@ -32,6 +33,31 @@ namespace pokedex_web
                     ddlDebilidad.DataTextField = "Descripcion";
                     ddlDebilidad.DataBind();
                 }
+
+                /// Configuracion si estamos MODIFICANDO un pokemon
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (id != "" && !IsPostBack)
+                {
+                    PokemonNegocio negocio = new PokemonNegocio();
+                    //List<Pokemon> lista = negocio.listar(id);
+                    //Pokemon seleccionado = lista[0];
+                    /// Como ya sabemos que devuelve un solo elemento, podemos hacer lo siguiente:
+                    /// va a guardar en la variable seleccionado el primer elemento de la lista
+                    Pokemon seleccionado = (negocio.listar(id))[0];
+
+                    /// pre cargamos los campos del formulario
+                    txtId.Text = id;
+                    txtNumero.Text = seleccionado.Numero.ToString();
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtDescripcion.Text = seleccionado.Descripcion;
+                    txtUrlImagen.Text = seleccionado.UrlImagen;
+                    imgPokemon.ImageUrl = seleccionado.UrlImagen;
+
+                    ddlTipo.SelectedValue = seleccionado.Tipo.Id.ToString();
+                    ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString();
+                }
+                
+
             }
             catch (Exception ex)
             {
@@ -60,7 +86,19 @@ namespace pokedex_web
                 nuevo.Debilidad = new Elemento();
                 nuevo.Debilidad.Id = int.Parse(ddlDebilidad.SelectedValue);
 
-                negocio.agregarConSP(nuevo);
+                /// Si estamos modificando, el id viene por querystring
+                if (Request.QueryString["id"] != null)
+                {
+                    /// Si entro aca es porque viene un id por querystring, entonces estoy modificando
+                    /// le mando el id que viene por querystring al objeto nuevo
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificarConSP(nuevo);
+                }
+                else
+                {
+                    negocio.agregarConSP(nuevo);
+                }
+
                 Response.Redirect("PokemonsLista.aspx", false);
             }
             catch (Exception ex)

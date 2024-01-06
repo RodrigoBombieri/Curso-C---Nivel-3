@@ -21,7 +21,6 @@
             <asp:ImageField HeaderText="Imagen" ControlStyle-Width="100px" ControlStyle-Height="100px" DataImageUrlField="UrlImagen" />
             <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />
             <asp:BoundField HeaderText="Debilidad" DataField="Debilidad.Descripcion" />
-            <asp:CommandField ShowSelectButton="true" SelectText="Ver Detalle" HeaderText="Ver detalle" />
             <asp:CommandField ShowSelectButton="true" SelectText="✍︎" HeaderText="Accion" />
         </Columns>
     </asp:GridView>

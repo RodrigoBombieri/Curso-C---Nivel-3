@@ -11,7 +11,7 @@ namespace negocioP
 {
     public class PokemonNegocio
     {
-        public List<Pokemon> listar()
+        public List<Pokemon> listar(string id = "")
         {
             // creamos una lista porque vamos a recibir varios datos de la DB
             List<Pokemon> lista = new List<Pokemon>();
@@ -28,7 +28,13 @@ namespace negocioP
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
                 // aqui colocamos la consulta que queremos hacerle a la DB.
-                comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1";
+                comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1 ";
+                if(id != "")
+                {
+                    /// Si el id no es vacío, agregamos el filtro a la consulta.
+                    /// va a devolver del listado un solo pokemon, el que tenga el id que le pasamos.
+                    comando.CommandText += " and P.Id = " + id;
+                }   
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -170,6 +176,37 @@ namespace negocioP
             try
             {
                 datos.setearConsulta("Update POKEMONS set Numero = @numero, Nombre = @nombre, Descripcion = @desc, UrlImagen = @img, IdTipo = @idTipo, IdDebilidad = @idDebilidad Where Id = @id");
+                datos.setearParametro("@numero", poke.Numero);
+                datos.setearParametro("@nombre", poke.Nombre);
+                datos.setearParametro("@desc", poke.Descripcion);
+                datos.setearParametro("@img", poke.UrlImagen);
+                datos.setearParametro("@idTipo", poke.Tipo.Id);
+                datos.setearParametro("@idDebilidad", poke.Debilidad.Id);
+                datos.setearParametro("@id", poke.Id);
+
+                datos.ejecutarAccion();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public void modificarConSP(Pokemon poke)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                ///datos.setearConsulta("Update POKEMONS set Numero = @numero, Nombre = @nombre, Descripcion = @desc, UrlImagen = @img, IdTipo = @idTipo, IdDebilidad = @idDebilidad Where Id = @id");
+                datos.setearProcedimiento("storedModificarPokemon");
                 datos.setearParametro("@numero", poke.Numero);
                 datos.setearParametro("@nombre", poke.Nombre);
                 datos.setearParametro("@desc", poke.Descripcion);
