@@ -192,10 +192,10 @@ namespace negocioD
             try
             {
                 //datos.setearConsulta("update DISCOS set Titulo = @titulo, CantidadCanciones = @cantCanciones, UrlImagenTapa = @urlTapa, IdEstilo = @idEstilo, IdTipoEdicion = @idTipoEdicion Where Id = @id");
-                datos.setearProcedimiento("storedModificarPokemon");
+                datos.setearProcedimiento("storedModificarDisco");
                 datos.setearParametro("@titulo", disco.Titulo);
                 datos.setearParametro("@cantCanciones", disco.CantidadCanciones);
-                datos.setearParametro("@urlTapa", disco.UrlImagenTapa);
+                datos.setearParametro("@img", disco.UrlImagenTapa);
                 datos.setearParametro("@idEstilo", disco.Estilo.Id);
                 datos.setearParametro("@idTipoEdicion", disco.Edicion.Id);
                 datos.setearParametro("@id", disco.Id);
