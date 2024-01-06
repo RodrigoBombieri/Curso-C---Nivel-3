@@ -19,11 +19,11 @@ namespace negocioP
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
             SqlDataReader lector;
-            
+
             // acá adentro configuramos la cadena de conexion con la DB, usando el manejo de excepciones (si esta todo ok devuelve una lista,
             // sino nos arrojará el error que ocurra).
             try
-            {   
+            {
                 // conectamos a la DB, primero el nombre del servidor que sacamos del SQL, luego el nombre de la DB, y por último la seguridad integrada.
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
@@ -45,7 +45,7 @@ namespace negocioP
                     aux.Descripcion = (string)lector["Descripcion"];
 
                     if (!(lector["UrlImagen"] is DBNull))
-                    aux.UrlImagen = (string)lector["UrlImagen"];
+                        aux.UrlImagen = (string)lector["UrlImagen"];
 
                     aux.Tipo = new Elemento();
                     aux.Tipo.Id = (int)lector["IdTipo"];
@@ -54,7 +54,7 @@ namespace negocioP
                     aux.Debilidad.Id = (int)lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)lector["Debilidad"];
 
-                    lista.Add(aux);      
+                    lista.Add(aux);
                 }
 
                 conexion.Close();
@@ -124,6 +124,33 @@ namespace negocioP
                 datos.setearParametro("@idTipo", nuevo.Tipo.Id);
                 datos.setearParametro("@idDebilidad", nuevo.Debilidad.Id);
                 datos.setearParametro("@urlImagen", nuevo.UrlImagen);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregarConSP(Pokemon nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("storedAltaPokemon");
+                datos.setearParametro("@numero", nuevo.Numero);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@desc", nuevo.Descripcion);
+                datos.setearParametro("@img", nuevo.UrlImagen);
+                datos.setearParametro("@idTipo", nuevo.Tipo.Id);
+                datos.setearParametro("@idDebilidad", nuevo.Debilidad.Id);
+                //datos.setearParametro("@idEvolucion", null);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -209,11 +236,11 @@ namespace negocioP
             {
                 // copiamos la consulta ORIGINAL a la DB y le agregamos And y dejamos un espacio al final para concatenar los nuevos filtros Avanzados.
                 string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1 and ";
-                
+
                 // preguntamos que contenido tiene el campo, y según lo que tenga, con el switch filtramos lo que se escriba en el txt.
                 // para filtrar por texto usando el comienza con, termina con o contiene, usamos el comodín %, y lo concatenamos con el filtro
                 // el comodín también nos sirve por si no escribimos nada en la txtFiltro, en lugar de romperse, muestra la lista entera.
-                if(campo == "Número")
+                if (campo == "Número")
                 {
                     switch (criterio)
                     {
@@ -228,7 +255,8 @@ namespace negocioP
                             break;
 
                     }
-                }else if(campo == "Nombre")
+                }
+                else if (campo == "Nombre")
                 {
                     switch (criterio)
                     {
@@ -296,5 +324,5 @@ namespace negocioP
         }
     }
 
-    
+
 }

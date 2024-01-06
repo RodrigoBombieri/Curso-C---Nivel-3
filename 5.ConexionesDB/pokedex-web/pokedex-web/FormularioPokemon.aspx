@@ -20,10 +20,6 @@
                 <asp:TextBox ID="txtNumero" CssClass="form-control" runat="server"></asp:TextBox>
             </div>
             <div class="mb-3">
-                <label for="txtDescripcion" class="form-label">Descripción: </label>
-                <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
-            </div>
-            <div class="mb-3">
                 <label for="ddlTipo" class="form-label">Tipo: </label>
                 <asp:DropDownList ID="ddlTipo" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
@@ -37,6 +33,23 @@
                 <a href="PokemonsLista.aspx" class="btn btn-danger">Cancelar</a>
             </div>
         </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label for="txtDescripcion" class="form-label">Descripción: </label>
+                <asp:TextBox ID="txtDescripcion" TextMode="MultiLine" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+            <asp:ScriptManager runat="server" />
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <label for="txtUrlImagen" class="form-label">Url Imagen: </label>
+                        <asp:TextBox ID="txtUrlImagen" AutoPostBack="true"
+                            OnTextChanged="txtUrlImagen_TextChanged" CssClass="form-control" runat="server"></asp:TextBox>
+                    </div>
+                    <asp:Image ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
+                        ID="imgPokemon" Width="60%" runat="server" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
     </div>
-
 </asp:Content>
