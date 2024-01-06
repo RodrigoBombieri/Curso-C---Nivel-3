@@ -128,6 +128,33 @@ namespace negocioD
             }
         }
 
+        public void agregarConSP(Disco nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //datos.setearConsulta("Insert into DISCOS (Titulo, CantidadCanciones, IdEstilo, IdTipoEdicion, UrlImagenTapa)values('" + nuevo.Titulo + "' , " + nuevo.CantidadCanciones + ", @idEstilo, @idTipoEdicion, @urlImagenTapa)");
+                datos.setearProcedimiento("storedAltaDisco");
+                datos.setearParametro("@titulo", nuevo.Titulo);
+                datos.setearParametro("@cantCanciones", nuevo.CantidadCanciones);
+                datos.setearParametro("@img", nuevo.UrlImagenTapa);
+                datos.setearParametro("@idEstilo", nuevo.Estilo.Id);
+                datos.setearParametro("@idTipoEdicion", nuevo.Edicion.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
         public void modificar(Disco disco)
         {
             AccesoDatos datos = new AccesoDatos();

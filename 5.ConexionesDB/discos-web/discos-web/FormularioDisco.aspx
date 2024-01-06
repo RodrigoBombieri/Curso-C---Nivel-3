@@ -33,5 +33,19 @@
                 <a href="DiscosLista.aspx" class="btn btn-danger">Cancelar</a>
             </div>
         </div>
+        <div class="col-6">
+            <asp:ScriptManager runat="server" />
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div class="mb-3">
+                        <label for="txtUrlImagen" class="form-label">Url Imagen: </label>
+                        <asp:TextBox ID="txtUrlImagen" AutoPostBack="true"
+                            OnTextChanged="txtUrlImagen_TextChanged" CssClass="form-control" runat="server" />
+                    </div>
+                    <asp:Image ID="imgDisco" ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
+                        Width="60%" runat="server" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
     </div>
 </asp:Content>

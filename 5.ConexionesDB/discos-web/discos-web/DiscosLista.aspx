@@ -20,7 +20,7 @@
             <asp:ImageField HeaderText="Portada" DataImageUrlField="UrlImagenTapa" ControlStyle-Height="100px" ControlStyle-Width="100px" />
             <asp:BoundField HeaderText="Estilo" DataField="Estilo.Descripcion" />
             <asp:BoundField HeaderText="Edicion" DataField="Edicion.Descripcion" />
-            <asp:CommandField ShowSelectButton="true" id="verDetalle" SelectText="Ver Detalle" HeaderText="Ver detalle" />
+            <asp:CommandField ShowSelectButton="true" SelectText="Ver Detalle" HeaderText="Ver detalle" />
             <asp:CommandField ShowSelectButton="true" SelectText="✍︎" HeaderText="Accion" />
         </Columns>
     </asp:GridView>
