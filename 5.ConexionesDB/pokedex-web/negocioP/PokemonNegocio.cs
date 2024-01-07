@@ -109,6 +109,8 @@ namespace negocioP
                     aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
 
+                    aux.Activo = (bool)datos.Lector["Activo"];
+
                     lista.Add(aux);
                 }
 

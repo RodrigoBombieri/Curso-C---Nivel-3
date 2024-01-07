@@ -143,5 +143,21 @@ namespace pokedex_web
                 throw;
             }
         }
+
+        protected void btnInactivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PokemonNegocio negocio = new PokemonNegocio();  
+                negocio.eliminarLogico(int.Parse(txtId.Text));
+                Response.Redirect("PokemonsLista.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex);
+                throw;
+            }
+        }
     }
 }
