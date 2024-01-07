@@ -16,6 +16,62 @@
                 <asp:TextBox ID="txtFiltro" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged"></asp:TextBox>
             </div>
         </div>
+        <div class="col-6" style="display: flex; flex-direction: column; justify-content: flex-end;">
+            <div class="mb-3">
+                <asp:CheckBox ID="chkFiltroAvanzado" Text="Filtro Avanzado" AutoPostBack="true"
+                    OnCheckedChanged="chkFiltroAvanzado_CheckedChanged" runat="server" />
+            </div>
+        </div>
+
+        <%if (chkFiltroAvanzado.Checked)
+            { %>
+        <div class="row">
+            <div class="col-3">
+                <div class="mb-3">
+                    <asp:Label ID="lblCampo" runat="server" Text="Campo"></asp:Label>
+                    <asp:DropDownList ID="ddlCampo" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
+                        <asp:ListItem Text="Numero" Value="Numero"></asp:ListItem>
+                        <asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
+                        <asp:ListItem Text="Tipo" Value="Tipo"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <asp:Label runat="server" Text="Criterio"></asp:Label>
+                    <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCriterio_SelectedIndexChanged">
+                        <asp:ListItem Text="Empieza con "></asp:ListItem>
+                        <asp:ListItem Text="Termina con"></asp:ListItem>
+                        <asp:ListItem Text="Contiene"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <asp:Label runat="server" Text="Filtro: "></asp:Label>
+                    <asp:TextBox ID="txtFiltroAvanzado" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <asp:Label runat="server" Text="Estado: "></asp:Label>
+                    <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control" >
+                        <asp:ListItem Text="Activo "></asp:ListItem>
+                        <asp:ListItem Text="Inactivo"></asp:ListItem>
+                        <asp:ListItem Text="Todos"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="mb-3">
+                    <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" OnClick="btnBuscar_Click" Text="Buscar" />
+                </div>
+            </div>
+        </div>
+
+        <% } %>
     </div>
     <asp:GridView ID="dgvPokemons" DataKeyNames="Id" OnSelectedIndexChanged="dgvPokemons_SelectedIndexChanged"
         CssClass="table" AutoGenerateColumns="false"
