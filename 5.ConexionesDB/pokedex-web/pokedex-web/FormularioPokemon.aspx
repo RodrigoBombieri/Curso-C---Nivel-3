@@ -27,12 +27,11 @@
                 <label for="ddlDebilidad" class="form-label">Debilidad: </label>
                 <asp:DropDownList ID="ddlDebilidad" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
-
             <div class="mb-3">
                 <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-primary" OnClick="btnAceptar_Click" Text="Aceptar" />
                 <a href="PokemonsLista.aspx" class="btn btn-outline-danger">Cancelar</a>
                 <asp:Button ID="btnInactivar" runat="server" CssClass="btn btn-warning" OnClick="btnInactivar_Click" Text="Inactivar" />
-            </div>
+             </div>
         </div>
         <div class="col-6">
             <div class="mb-3">
