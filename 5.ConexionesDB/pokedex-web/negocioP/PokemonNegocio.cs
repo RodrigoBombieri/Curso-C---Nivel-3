@@ -256,9 +256,11 @@ namespace negocioP
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                /// para que inactive setea el campo Activo a 0
+                /// dependiendo del valor que le pasemos a activo,
+                /// va a cambiar el valor de la columna Activo en la DB.
                 datos.setearConsulta("update POKEMONS set Activo = @activo where id = @id");
                 datos.setearParametro("@id", id);
+                /// si activo es false, entonces Activo = 0, si es true, Activo = 1
                 datos.setearParametro("@activo", activo);
                 datos.ejecutarAccion();
 

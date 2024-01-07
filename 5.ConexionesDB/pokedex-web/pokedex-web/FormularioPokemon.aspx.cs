@@ -51,7 +51,7 @@ namespace pokedex_web
                     /// va a guardar en la variable seleccionado el primer elemento de la lista
                     Pokemon seleccionado = (negocio.listar(id))[0];
 
-                    /// guardo pokemon seleciconado en session
+                    /// guardo pokemon seleciconado en session para poder usarlo en el boton eliminar
                     Session.Add("pokeSeleccionado", seleccionado);
 
                     /// Pre cargamos los campos del formulario
@@ -66,6 +66,7 @@ namespace pokedex_web
                     ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString();
 
                     /// configurar acciones
+                    /// si el pokemon esta inactivo, el boton inactivar va a decir reactivar
                     if (!seleccionado.Activo)
                     {
                         btnInactivar.Text = "Reactivar";
@@ -159,8 +160,11 @@ namespace pokedex_web
             try
             {
                 PokemonNegocio negocio = new PokemonNegocio();
+                /// guardo en la variable seleccionado el pokemon que esta en session
                 Pokemon seleccionado = (Pokemon)Session["pokeSeleccionado"];
 
+                /// le mando el id del pokemon seleccionado y el estado contrario al que tiene actualmente
+                /// para que luego de ejecutar el metodo, el pokemon quede con el estado contrario
                 negocio.eliminarLogico(seleccionado.Id, !seleccionado.Activo);
                 Response.Redirect("PokemonsLista.aspx", false);
             }

@@ -9,8 +9,16 @@
         }
     </style>
     <h1>Lista de Pokemons</h1>
-    <asp:GridView ID="dgvPokemons" DataKeyNames="Id" OnSelectedIndexChanged="dgvPokemons_SelectedIndexChanged" 
-        CssClass="table" AutoGenerateColumns="false" 
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <asp:Label runat="server" Text="Filtrar"></asp:Label>
+                <asp:TextBox ID="txtFiltro" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <asp:GridView ID="dgvPokemons" DataKeyNames="Id" OnSelectedIndexChanged="dgvPokemons_SelectedIndexChanged"
+        CssClass="table" AutoGenerateColumns="false"
         OnPageIndexChanging="dgvPokemons_PageIndexChanging"
         AllowPaging="True" PageSize="5" runat="server">
         <Columns>
