@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using negocioD;
+using dominioD;
 
 namespace discos_web
 {
@@ -13,7 +14,8 @@ namespace discos_web
         protected void Page_Load(object sender, EventArgs e)
         {
             DiscoNegocio negocio = new DiscoNegocio();
-            dgvDiscos.DataSource = negocio.listarConSP();
+            Session.Add("listaDiscos", negocio.listar());
+            dgvDiscos.DataSource = Session["listaDiscos"];
             dgvDiscos.DataBind();
         }
 
@@ -26,6 +28,14 @@ namespace discos_web
         protected void dgvDiscos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvDiscos.PageIndex = e.NewPageIndex;
+            dgvDiscos.DataBind();
+        }
+
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Disco> lista = (List<Disco>)Session["listaDiscos"];
+            List<Disco> listaFiltrada = lista.FindAll(x => x.Titulo.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+            dgvDiscos.DataSource = listaFiltrada;
             dgvDiscos.DataBind();
         }
     }

@@ -9,6 +9,14 @@
         }
     </style>
     <h1>Lista Discos usando Store Procedure</h1>
+    <div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <asp:Label runat="server" Text="Filtro: "></asp:Label>
+                <asp:TextBox ID="txtFiltro" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" runat="server"></asp:TextBox>
+            </div>
+        </div>
+    </div>
     <asp:GridView ID="dgvDiscos" DataKeyNames="Id" OnSelectedIndexChanged="dgvDiscos_SelectedIndexChanged" 
         CssClass="table" AutoGenerateColumns="false" 
         OnPageIndexChanging="dgvDiscos_PageIndexChanging" 
