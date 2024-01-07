@@ -3,6 +3,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Lista de Productos con Store Procedure</h1>
+   <div class="row">
+       <div class="col-6">
+           <div class="mb-3">
+               <asp:Label runat="server" Text="Filtrar: "></asp:Label>
+               <asp:TextBox ID="txtFiltro" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtFiltro_TextChanged" runat="server"></asp:TextBox>
+           </div>
+       </div>
+   </div>
+
     <asp:GridView ID="dgvProductos" DataKeyNames="Id" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" 
         CssClass="table" AutoGenerateColumns="false" 
         OnPageIndexChanging="dgvProductos_PageIndexChanging"
