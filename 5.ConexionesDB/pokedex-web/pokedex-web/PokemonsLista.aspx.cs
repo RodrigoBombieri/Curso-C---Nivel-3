@@ -11,8 +11,10 @@ namespace pokedex_web
 {
     public partial class PokemonsLista : System.Web.UI.Page
     {
+        public bool filtroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            filtroAvanzado = false;
             PokemonNegocio negocio = new PokemonNegocio();
             /// Guardamos en session la lista de pokemons para poder usarla en el evento SelectedIndexChanged
             Session.Add("listaPokemons", negocio.listar());
@@ -50,22 +52,47 @@ namespace pokedex_web
 
         protected void chkFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
         {
-
+            // Si el checkbox esta seleccionado, habilitamos el filtro avanzado
+            filtroAvanzado = chkFiltroAvanzado.Checked;
+            // Si el filtro avanzado esta habilitado, deshabilitamos el filtro rapido
+            txtFiltro.Enabled = !filtroAvanzado;
         }
 
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ddlCriterio.Items.Clear();
+            if(ddlCampo.SelectedItem.ToString() == "Número")
+            {
+                ddlCriterio.Items.Add("Igual a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+            }
+            else
+            {
+                ddlCriterio.Items.Add("Contiene");
+                ddlCriterio.Items.Add("Comienza con");
+                ddlCriterio.Items.Add("Termina con");
+            }
         }
 
-        protected void ddlCriterio_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                PokemonNegocio negocio = new PokemonNegocio();
+                dgvPokemons.DataSource = negocio.filtrar(ddlCampo.SelectedItem.ToString(),
+                    ddlCriterio.SelectedItem.ToString(), txtFiltroAvanzado.Text, 
+                    ddlEstado.SelectedItem.ToString());
+                dgvPokemons.DataBind();
 
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("Error", ex);
+                throw;
+            }
         }
     }
 }

@@ -272,7 +272,7 @@ namespace negocioP
             }
         }
 
-        public List<Pokemon> filtrar(string campo, string criterio, string filtro)
+        public List<Pokemon> filtrar(string campo, string criterio, string filtro, string estado)
         {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
@@ -280,7 +280,7 @@ namespace negocioP
             try
             {
                 // copiamos la consulta ORIGINAL a la DB y le agregamos And y dejamos un espacio al final para concatenar los nuevos filtros Avanzados.
-                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1 and ";
+                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad and ";
 
                 // preguntamos que contenido tiene el campo, y según lo que tenga, con el switch filtramos lo que se escriba en el txt.
                 // para filtrar por texto usando el comienza con, termina con o contiene, usamos el comodín %, y lo concatenamos con el filtro
@@ -322,17 +322,28 @@ namespace negocioP
                     switch (criterio)
                     {
                         case "Comienza con":
-                            consulta += "P.Descripcion like '" + filtro + "%'";
+                            consulta += "E.Descripcion like '" + filtro + "%'";
                             break;
                         case "Termina con":
-                            consulta += "P.Descripcion like '%" + filtro + "'";
+                            consulta += "E.Descripcion like '%" + filtro + "'";
                             break;
                         default:
-                            consulta += "P.Descripcion like '%" + filtro + "%'";
+                            consulta += "E.Descripcion like '%" + filtro + "%'";
                             break;
 
                     }
                 }
+                
+                if (estado == "Inactivo")
+                {
+                    consulta += " and P.Activo = 0";
+                }
+                else if(estado == "Activo")
+                {
+                    consulta += " and P.Activo = 1";
+                }
+                
+                
                 // seteamos con la consulta que armamos arriba.
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
@@ -355,6 +366,8 @@ namespace negocioP
                     aux.Debilidad = new Elemento();
                     aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
                     lista.Add(aux);
                 }

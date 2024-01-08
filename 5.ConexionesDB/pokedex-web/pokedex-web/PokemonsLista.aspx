@@ -30,16 +30,16 @@
                 <div class="mb-3">
                     <asp:Label ID="lblCampo" runat="server" Text="Campo"></asp:Label>
                     <asp:DropDownList ID="ddlCampo" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged">
-                        <asp:ListItem Text="Numero" Value="Numero"></asp:ListItem>
-                        <asp:ListItem Text="Nombre" Value="Nombre"></asp:ListItem>
-                        <asp:ListItem Text="Tipo" Value="Tipo"></asp:ListItem>
+                        <asp:ListItem Text="Número" ></asp:ListItem>
+                        <asp:ListItem Text="Nombre" ></asp:ListItem>
+                        <asp:ListItem Text="Tipo" ></asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
             <div class="col-3">
                 <div class="mb-3">
                     <asp:Label runat="server" Text="Criterio"></asp:Label>
-                    <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCriterio_SelectedIndexChanged">
+                    <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control" AutoPostBack="true" >
                         <asp:ListItem Text="Empieza con "></asp:ListItem>
                         <asp:ListItem Text="Termina con"></asp:ListItem>
                         <asp:ListItem Text="Contiene"></asp:ListItem>
@@ -55,7 +55,7 @@
             <div class="col-3">
                 <div class="mb-3">
                     <asp:Label runat="server" Text="Estado: "></asp:Label>
-                    <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control" >
+                    <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control">
                         <asp:ListItem Text="Activo "></asp:ListItem>
                         <asp:ListItem Text="Inactivo"></asp:ListItem>
                         <asp:ListItem Text="Todos"></asp:ListItem>
