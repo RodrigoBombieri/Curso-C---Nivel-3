@@ -267,7 +267,7 @@ namespace negocio
                 {
                     switch (criterio)
                     {
-                        case "Comienza con":
+                        case "Empieza con":
                             consulta += "Nombre like '" + filtro + "%'";
                             break;
                         case "Termina con":
@@ -282,7 +282,7 @@ namespace negocio
                 {
                     switch (criterio)
                     {
-                        case "Comienza con":
+                        case "Empieza con":
                             consulta += "A.Descripcion like '" + filtro + "%'";
                             break;
                         case "Termina con":

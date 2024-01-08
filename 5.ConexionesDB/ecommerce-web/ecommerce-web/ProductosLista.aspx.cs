@@ -11,8 +11,10 @@ namespace ecommerce_web
 {
     public partial class PoductosLista : System.Web.UI.Page
     {
+        public bool filtroAvanzado {  get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            filtroAvanzado = false;
             ArticuloNegocio negocio = new ArticuloNegocio();
             Session.Add("listaArticulos", negocio.listarConSP());
             dgvProductos.DataSource = Session["listaArticulos"];
@@ -37,6 +39,54 @@ namespace ecommerce_web
             List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(txtFiltro.Text.ToUpper()));
             dgvProductos.DataSource = listaFiltrada;
             dgvProductos.DataBind();
+        }
+
+        protected void chkFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
+        {
+            filtroAvanzado = chkFiltroAvanzado.Checked;
+            txtFiltro.Enabled = !filtroAvanzado;
+        }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlCriterio.Items.Clear();
+            if(ddlCampo.SelectedItem.ToString() == "Precio")
+            {
+                ddlCriterio.Items.Add("Igual a");
+                ddlCriterio.Items.Add("Mayor a");
+                ddlCriterio.Items.Add("Menor a");
+            }
+            else
+            {
+                ddlCriterio.Items.Add("Contiene");
+                ddlCriterio.Items.Add("Empieza con");
+                ddlCriterio.Items.Add("Termina con");
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+
+                if(string.IsNullOrEmpty(txtFiltroAvanzado.Text) )
+                {
+                    dgvProductos.DataSource = negocio.listarConSP();
+                }
+                else
+                {
+                    dgvProductos.DataSource = negocio.filtrar(ddlCampo.SelectedItem.ToString(),
+                        ddlCriterio.SelectedItem.ToString(), txtFiltroAvanzado.Text);
+                }
+
+                dgvProductos.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
         }
     }
 }
