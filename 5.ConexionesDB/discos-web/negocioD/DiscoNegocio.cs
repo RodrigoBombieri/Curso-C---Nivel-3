@@ -236,7 +236,7 @@ namespace negocioD
             try
             {
                 string consulta = "Select Titulo, CantidadCanciones, UrlImagenTapa, E.Descripcion Estilo, T.Descripcion Edicion, D.IdEstilo, D.IdTipoEdicion, D.Id from DISCOS D, ESTILOS E, TIPOSEDICION T where D.IdEstilo = E.Id and D.IdTipoEdicion = T.Id And ";
-                if (campo == "Cantidad de Canciones")
+                if (campo == "Cantidad Canciones")
                 {
                     switch (criterio)
                     {
@@ -256,7 +256,7 @@ namespace negocioD
                 {
                     switch (criterio)
                     {
-                        case "Comienza con":
+                        case "Empieza con":
                             consulta += "Titulo like '" + filtro + "%'";
                             break;
                         case "Termina con":
@@ -266,6 +266,21 @@ namespace negocioD
                             consulta += "Titulo like '%" + filtro +"%'";
                             break;
 
+                    }
+                }
+                else if(campo == "Estilo")
+                {
+                    switch(criterio)
+                    {
+                        case "Empieza con":
+                            consulta += "E.Descripcion like '" + filtro + "%'";
+                            break;
+                        case "Termina con":
+                            consulta += "E.Descripcion like '%" + filtro + "'";
+                            break;
+                        case "Contiene":
+                            consulta += "E.Descripcion like '%" + filtro + "%'";
+                            break;
                     }
                 }
 
