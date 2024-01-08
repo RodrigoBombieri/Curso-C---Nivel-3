@@ -40,9 +40,9 @@
                 <div class="mb-3">
                     <asp:Label runat="server" Text="Criterio"></asp:Label>
                     <asp:DropDownList ID="ddlCriterio" runat="server" CssClass="form-control" AutoPostBack="true" >
-                        <asp:ListItem Text="Empieza con "></asp:ListItem>
-                        <asp:ListItem Text="Termina con"></asp:ListItem>
-                        <asp:ListItem Text="Contiene"></asp:ListItem>
+                        <asp:ListItem Text="Igual a"></asp:ListItem>
+                        <asp:ListItem Text="Mayor a"></asp:ListItem>
+                        <asp:ListItem Text="Menor a"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>

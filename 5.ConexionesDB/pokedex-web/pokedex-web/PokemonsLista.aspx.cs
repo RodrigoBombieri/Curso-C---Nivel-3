@@ -61,7 +61,7 @@ namespace pokedex_web
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlCriterio.Items.Clear();
-            if(ddlCampo.SelectedItem.ToString() == "Número")
+            if (ddlCampo.SelectedItem.ToString() == "Número")
             {
                 ddlCriterio.Items.Add("Igual a");
                 ddlCriterio.Items.Add("Mayor a");
@@ -70,7 +70,7 @@ namespace pokedex_web
             else
             {
                 ddlCriterio.Items.Add("Contiene");
-                ddlCriterio.Items.Add("Comienza con");
+                ddlCriterio.Items.Add("Empieza con");
                 ddlCriterio.Items.Add("Termina con");
             }
         }
@@ -81,9 +81,18 @@ namespace pokedex_web
             try
             {
                 PokemonNegocio negocio = new PokemonNegocio();
-                dgvPokemons.DataSource = negocio.filtrar(ddlCampo.SelectedItem.ToString(),
-                    ddlCriterio.SelectedItem.ToString(), txtFiltroAvanzado.Text, 
-                    ddlEstado.SelectedItem.ToString());
+
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    dgvPokemons.DataSource = negocio.listarConSP();
+                }
+                else
+                {
+                    dgvPokemons.DataSource = negocio.filtrar(ddlCampo.SelectedItem.ToString(),
+                        ddlCriterio.SelectedItem.ToString(), txtFiltroAvanzado.Text,
+                        ddlEstado.SelectedItem.ToString());
+
+                }
                 dgvPokemons.DataBind();
 
             }
