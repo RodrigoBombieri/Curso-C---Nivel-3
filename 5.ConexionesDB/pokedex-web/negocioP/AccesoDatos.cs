@@ -84,6 +84,22 @@ namespace negocioP
             conexion.Close();
         }
 
+        public int ejecutarAccionScalar()
+        {
+            comando.Connection = conexion;
 
+            try
+            {
+                conexion.Open();
+                /// se usa para cuando queremos ejecutar una accion desde la base de datos, 
+                /// y no una consulta (no query=no consulta) y devuelve un valor entero 
+                return int.Parse(comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
