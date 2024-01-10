@@ -24,7 +24,7 @@
                 <div class="mb-3">
                     <asp:Label ID="lblCampo" runat="server" Text="Campo"></asp:Label>
                     <asp:DropDownList ID="ddlCampo" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCampo_SelectedIndexChanged" runat="server">
-                        <asp:ListItem Text="Precio"></asp:ListItem>
+                        <asp:ListItem Text="Precio" ></asp:ListItem>
                         <asp:ListItem Text="Nombre"></asp:ListItem>
                         <asp:ListItem Text="Descripcion"></asp:ListItem>
                     </asp:DropDownList>
