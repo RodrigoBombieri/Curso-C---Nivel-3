@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="content/styles.css" rel="stylesheet" />
     <title>Pokedex Web</title>
@@ -12,25 +12,36 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-secondary-subtle">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Pokedex Web</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="PokemonsLista.aspx">Lista Pokemons</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <form id="form1" runat="server">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Default.aspx">Pokedex Web</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Default.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PokemonsLista.aspx">Lista Pokemons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PokemonsLista.aspx">Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PokemonsLista.aspx">Mi Perfil</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex">
+                    <a href="Login.aspx" class="btn btn-success me-2">Login</a>
+                    <a href="Registro.aspx" class="btn btn-outline-primary me-auto">Registrarse</a>
+                    <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" runat="server" />
+                </div>
+            </div>
+        </nav>
         <div>
             <div class="container">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
