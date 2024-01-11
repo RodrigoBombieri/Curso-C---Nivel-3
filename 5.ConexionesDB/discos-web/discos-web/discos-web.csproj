@@ -70,9 +70,12 @@
     <Content Include="Default.aspx" />
     <Content Include="DetalleDisco.aspx" />
     <Content Include="DiscosLista.aspx" />
-    <Content Include="DiscosListaForeach.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="Favoritos.aspx" />
     <Content Include="FormularioDisco.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="MiPerfil.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -98,12 +101,19 @@
     <Compile Include="DiscosLista.aspx.designer.cs">
       <DependentUpon>DiscosLista.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DiscosListaForeach.aspx.cs">
-      <DependentUpon>DiscosListaForeach.aspx</DependentUpon>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DiscosListaForeach.aspx.designer.cs">
-      <DependentUpon>DiscosListaForeach.aspx</DependentUpon>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioDisco.aspx.cs">
       <DependentUpon>FormularioDisco.aspx</DependentUpon>
@@ -114,6 +124,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MiPerfil.aspx.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiPerfil.aspx.designer.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro.aspx.cs">

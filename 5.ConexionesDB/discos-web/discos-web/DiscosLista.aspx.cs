@@ -14,11 +14,22 @@ namespace discos_web
         public bool filtroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            /// Validar si es admin para acceder a esta seccion
+            if (!Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "se requere permisos de admin para acceder a esta pantalla");
+                Response.Redirect("Error.aspx", false);
+            }
+            
             filtroAvanzado = false;
-            DiscoNegocio negocio = new DiscoNegocio();
-            Session.Add("listaDiscos", negocio.listar());
-            dgvDiscos.DataSource = Session["listaDiscos"];
-            dgvDiscos.DataBind();
+
+            if (!IsPostBack)
+            {
+                DiscoNegocio negocio = new DiscoNegocio();
+                Session.Add("listaDiscos", negocio.listar());
+                dgvDiscos.DataSource = Session["listaDiscos"];
+                dgvDiscos.DataBind();
+            }
         }
 
         protected void dgvDiscos_SelectedIndexChanged(object sender, EventArgs e)
