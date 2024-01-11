@@ -14,13 +14,25 @@ namespace pokedex_web
         public bool filtroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            /// Validamos si el usuario es admin podra acceder a la Lista de pokemons
+            if (!Seguridad.esAdmin(Session["trainee"]))
+            {
+                Session.Add("error", "No tiene permisos admin para acceder a esta sección");
+                Response.Redirect("Error.aspx");
+            }
+
+
             filtroAvanzado = false;
-            PokemonNegocio negocio = new PokemonNegocio();
-            /// Guardamos en session la lista de pokemons para poder usarla en el evento SelectedIndexChanged
-            Session.Add("listaPokemons", negocio.listar());
-            /// Cargamos el gridview con la lista de pokemons que esta en session
-            dgvPokemons.DataSource = Session["listaPokemons"];
-            dgvPokemons.DataBind();
+            if (!IsPostBack)
+            {
+                PokemonNegocio negocio = new PokemonNegocio();
+                /// Guardamos en session la lista de pokemons para poder usarla en el evento SelectedIndexChanged
+                Session.Add("listaPokemons", negocio.listar());
+                /// Cargamos el gridview con la lista de pokemons que esta en session
+                dgvPokemons.DataSource = Session["listaPokemons"];
+                dgvPokemons.DataBind();
+
+            }
         }
 
         protected void dgvPokemons_SelectedIndexChanged(object sender, EventArgs e)
