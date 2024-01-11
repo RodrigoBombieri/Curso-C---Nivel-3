@@ -11,14 +11,24 @@ namespace ecommerce_web
 {
     public partial class PoductosLista : System.Web.UI.Page
     {
-        public bool filtroAvanzado {  get; set; }
+        public bool filtroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.esAdmin(Session["usuario"]))
+            {
+                Session.Add("error", "se requiere permisos de admin para acceder a esta pantalla");
+                Response.Redirect("Error.aspx");
+            }
+
+
             filtroAvanzado = false;
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            Session.Add("listaArticulos", negocio.listarConSP());
-            dgvProductos.DataSource = Session["listaArticulos"];
-            dgvProductos.DataBind();
+            if (!IsPostBack)
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                Session.Add("listaArticulos", negocio.listarConSP());
+                dgvProductos.DataSource = Session["listaArticulos"];
+                dgvProductos.DataBind();
+            }
         }
 
         protected void dgvProductos_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,7 +60,7 @@ namespace ecommerce_web
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlCriterio.Items.Clear();
-            if(ddlCampo.SelectedItem.ToString() == "Precio")
+            if (ddlCampo.SelectedItem.ToString() == "Precio")
             {
                 ddlCriterio.Items.Add("Igual a");
                 ddlCriterio.Items.Add("Mayor a");
@@ -70,7 +80,7 @@ namespace ecommerce_web
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
 
-                if(string.IsNullOrEmpty(txtFiltroAvanzado.Text) )
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
                 {
                     dgvProductos.DataSource = negocio.listarConSP();
                 }
