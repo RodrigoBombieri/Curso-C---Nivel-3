@@ -24,7 +24,7 @@ namespace pokedex_web
 
         protected void btnSalir_Click(object sender, EventArgs e)
         {
-            /// Cierro la sesion y redirecciono a la pagina de login
+            /// Cierro la session y redirecciono a la pagina de login
             Session.Clear();
             Response.Redirect("Login.aspx");
         }

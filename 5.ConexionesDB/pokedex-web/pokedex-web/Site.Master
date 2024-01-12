@@ -41,10 +41,12 @@
                     <a href="Login.aspx" class="btn btn-success me-2">Login</a>
                     <a href="Registro.aspx" class="btn btn-outline-primary me-auto">Registrarse</a>
                     <%}
-                        else {
-                    %> <asp:Button ID="btnSalir" CssClass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" Text="Salir" />
+                        else
+                        {
+                    %>
+                    <asp:Button ID="btnSalir" CssClass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" Text="Salir" />
                     <asp:Label ID="lblUser" CssClass="text-light m-auto me-2" runat="server" Text="User"></asp:Label>
-                    <%} %>      
+                    <%} %>
                     <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%;" runat="server" />
                 </div>
             </div>

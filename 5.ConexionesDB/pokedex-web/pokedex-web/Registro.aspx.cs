@@ -27,7 +27,9 @@ namespace pokedex_web
                 user.Email = txtEmail.Text;
                 user.Pass = txtPassword.Text;
                 /// capturar el id sirve para saber que usurio esta ingresando
-                int id = traineeNegocio.insertarNuevo(user);
+                /// Capturamos el id y se lo brindamos a la session para que tambien loguee
+                user.Id = traineeNegocio.insertarNuevo(user);
+                Session.Add("trainee", user);
 
                 emailService.armarCorreo(user.Email, "Bienvenida Taineer", "Hola te damos la bienvenida a la App");
                 emailService.enviarCorreo();
