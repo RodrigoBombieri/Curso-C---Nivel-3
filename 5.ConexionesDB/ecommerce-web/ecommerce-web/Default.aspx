@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         .imgProducto {
-            height: 100px;
-            width: 100px;
+            height: 200px;
+            width: 200px;
         }
     </style>
     <h1>ECOMMERCE WEB</h1>
