@@ -23,12 +23,14 @@ namespace pokedex_web
                 Trainee user = new Trainee();
                 TraineeNegocio traineeNegocio = new TraineeNegocio();
                 EmailService emailService = new EmailService();
-
+                
+                // Cargo los datos ingresados en el formulario
                 user.Email = txtEmail.Text;
                 user.Pass = txtPassword.Text;
-                /// capturar el id sirve para saber que usurio esta ingresando
-                /// Capturamos el id y se lo brindamos a la session para que tambien loguee
+                /// Con esos datos realizo la insercion en la base de datos, y me devuelve el id del usuario
+                /// Guardo el id en el objeto user
                 user.Id = traineeNegocio.insertarNuevo(user);
+                /// Le envio el objeto a la session para que quede abierta (logueado)
                 Session.Add("trainee", user);
 
                 emailService.armarCorreo(user.Email, "Bienvenida Taineer", "Hola te damos la bienvenida a la App");
