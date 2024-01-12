@@ -26,7 +26,9 @@ namespace discos_web
 
                 usuario.Email = txtEmail.Text;
                 usuario.Pass = txtPassword.Text;
-                int id = usuarioNegocio.insertarNuevo(usuario);
+                usuario.Id = usuarioNegocio.insertarNuevo(usuario);
+
+                Session.Add("usuario", usuario);
 
                 emailService.armarCorreo(usuario.Email, "Bienvenido, que sea rock!", "Te damos la bienvenida a la App");
                 emailService.enviarCorreo();
