@@ -65,7 +65,7 @@ namespace negocioP
             try
             {
                 /// Si lee el archivo nos va a devolver un registro
-                datos.setearConsulta("Select id, email, pass, admin, imagenPerfil from USERS Where email = @email And pass = @pass");
+                datos.setearConsulta("Select id, email, pass, admin, imagenPerfil, nombre, apellido from USERS Where email = @email And pass = @pass");
                 datos.setearParametro("@email", trainee.Email);
                 datos.setearParametro("@pass", trainee.Pass);
                 /// Ejecuto la lectura
@@ -80,6 +80,10 @@ namespace negocioP
                     
                     if(!(datos.Lector["imagenPerfil"] is DBNull))
                         trainee.ImagenPerfil = (string)datos.Lector["imagenPerfil"];
+                    if (!(datos.Lector["nombre"] is DBNull))
+                        trainee.Nombre = (string)datos.Lector["nombre"];
+                    if (!(datos.Lector["apellido"] is DBNull))
+                        trainee.Apellido = (string)datos.Lector["apellido"];
                     return true;
                 }
                 return false;
