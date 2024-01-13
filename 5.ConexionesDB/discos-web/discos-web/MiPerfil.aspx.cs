@@ -12,7 +12,28 @@ namespace discos_web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            try
+            {
+                if (!IsPostBack)
+                {
+                    if (Seguridad.sesionActiva(Session["usuario"]))
+                    {
+                        Usuario user = (Usuario)Session["usuario"];
+                        txtEmail.Text = user.Email;
+                        txtEmail.ReadOnly = true;
+                        txtNombre.Text = user.Nombre;
+                        txtApellido.Text = user.Apellido;
+
+                        if(!string.IsNullOrEmpty(user.ImagenPerfil))
+                            imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
