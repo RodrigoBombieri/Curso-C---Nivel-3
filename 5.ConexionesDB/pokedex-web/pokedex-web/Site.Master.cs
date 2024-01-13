@@ -13,6 +13,7 @@ namespace pokedex_web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Cada vez que carga le pone por defecto la imagen de perfil vacia, hasta que se loguee
             imgAvatar.ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlECQSBGh032SFnX3lkF4CbEx9PvZxbFFcFscHj5qp9DjnVnYaohiMOKuLKrdJiF-8sVM&usqp=CAU";
             /// Si la pagina no es login o registro y no hay un usuario logueado redirecciono a la pagina de login
             if (!(Page is Login || Page is Registro || Page is Default || Page is Error))
@@ -24,8 +25,10 @@ namespace pokedex_web
                 }
                 else
                 {
+                    /// Si la sesion esta activa, capturo el usuario logueado y lo muestro en el label
                     Trainee user = (Trainee)Session["trainee"];
                     lblUser.Text = user.Email;
+                    /// Si no es nulo o vacio el campo imagenPerfil, le agrego la imagen al avatar
                     if (!string.IsNullOrEmpty(user.ImagenPerfil))
                         imgAvatar.ImageUrl = "~/Images/" + user.ImagenPerfil;
                 }

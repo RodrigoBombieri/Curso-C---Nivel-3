@@ -39,10 +39,11 @@ namespace negocioP
 
             try
             {
-                datos.setearConsulta("Update USERS Set nombre = @nombre, apellido = @apellido, imagenPerfil = @imagen Where Id = @id");
+                datos.setearConsulta("Update USERS Set nombre = @nombre, apellido = @apellido, imagenPerfil = @imagen, fechaNacimiento = @fecha Where Id = @id");
                 datos.setearParametro("@nombre", user.Nombre);
                 datos.setearParametro("@apellido", user.Apellido);
-                datos.setearParametro("@imagen", user.ImagenPerfil);
+                datos.setearParametro("@imagen", user.ImagenPerfil != null ? user.ImagenPerfil : "");
+                datos.setearParametro("@fecha", user.FechaNacimiento);
                 datos.setearParametro("@id", user.Id);
 
                 datos.ejecutarAccion();
@@ -65,7 +66,7 @@ namespace negocioP
             try
             {
                 /// Si lee el archivo nos va a devolver un registro
-                datos.setearConsulta("Select id, email, pass, admin, imagenPerfil, nombre, apellido from USERS Where email = @email And pass = @pass");
+                datos.setearConsulta("Select id, email, pass, admin, imagenPerfil, nombre, apellido, fechaNacimiento from USERS Where email = @email And pass = @pass");
                 datos.setearParametro("@email", trainee.Email);
                 datos.setearParametro("@pass", trainee.Pass);
                 /// Ejecuto la lectura
@@ -84,6 +85,9 @@ namespace negocioP
                         trainee.Nombre = (string)datos.Lector["nombre"];
                     if (!(datos.Lector["apellido"] is DBNull))
                         trainee.Apellido = (string)datos.Lector["apellido"];
+                    if (!(datos.Lector["fechaNacimiento"] is DBNull))
+                        trainee.FechaNacimiento = DateTime.Parse(datos.Lector["fechaNacimiento"].ToString());
+
                     return true;
                 }
                 return false;
