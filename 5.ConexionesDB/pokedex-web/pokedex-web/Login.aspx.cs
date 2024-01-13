@@ -30,8 +30,7 @@ namespace pokedex_web
                 if (negocio.login(trainee))
                 {
                     /// si el login es correcto guardo el objeto en session y redirecciono a la pagina principal
-                    Session.Add("trainee", trainee);
-                    
+                    Session.Add("trainee", trainee);                  
                     Response.Redirect("MiPerfil.aspx", false);
                 }
                 else
