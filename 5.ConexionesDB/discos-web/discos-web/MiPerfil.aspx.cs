@@ -12,9 +12,33 @@ namespace discos_web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /// Si no hay una sesionActiva (devolvió false), redirigimos a login para iniciar sesion
-            if (!Seguridad.sesionActiva(Session["usuario"]))
-                Response.Redirect("Login.aspx", false);
+            
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UsuarioNegocio negocio = new UsuarioNegocio();
+                string ruta = Server.MapPath("./Images/");
+                Usuario usuario = (Usuario)Session["usuario"];
+                txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuario.Id + ".jpg");
+
+                usuario.ImagenPerfil = "perfil-" + usuario.Id + ".jpg";
+                usuario.Nombre = txtNombre.Text;
+                usuario.Apellido = txtApellido.Text;
+
+                negocio.actualizar(usuario);
+
+                Image img = (Image)Master.FindControl("imgAvatar");
+                
+                img.ImageUrl = "~/Images/" + usuario.ImagenPerfil;
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
         }
     }
 }
