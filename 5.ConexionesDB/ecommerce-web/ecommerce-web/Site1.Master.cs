@@ -19,7 +19,7 @@ namespace ecommerce_web
                 if (!(Seguridad.sesionActiva(Session["usuario"])))
                     Response.Redirect("Login.aspx", false);
 
-                else
+                else 
                 {
                     Usuario user = (Usuario)Session["usuario"];
                     lblSalir.Text = user.Email;
