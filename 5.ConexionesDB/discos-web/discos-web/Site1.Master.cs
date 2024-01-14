@@ -23,8 +23,7 @@ namespace discos_web
                 else
                 {
                     Usuario user = (Usuario)Session["usuario"];
-                    lblUser.Text = user.Email;
-                    
+                    lblUser.Text = user.Email;                   
                     if(!string.IsNullOrEmpty(user.ImagenPerfil))
                         imgAvatar.ImageUrl = "~/Images/" + user.ImagenPerfil;
                 }

@@ -23,8 +23,8 @@ namespace discos_web
                         txtEmail.ReadOnly = true;
                         txtNombre.Text = user.Nombre;
                         txtApellido.Text = user.Apellido;
-
-                        if(!string.IsNullOrEmpty(user.ImagenPerfil))
+                        txtFechaNacimiento.Text = user.FechaNacimiento.ToString("yyyy-MM-dd");
+                        if (!string.IsNullOrEmpty(user.ImagenPerfil))
                             imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
                     }
                 }
@@ -41,18 +41,21 @@ namespace discos_web
             try
             {
                 UsuarioNegocio negocio = new UsuarioNegocio();
-                string ruta = Server.MapPath("./Images/");
                 Usuario usuario = (Usuario)Session["usuario"];
-                txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuario.Id + ".jpg");
 
-                usuario.ImagenPerfil = "perfil-" + usuario.Id + ".jpg";
+                if (txtImagen.PostedFile.FileName != "")
+                {
+                    string ruta = Server.MapPath("./Images/");
+                    txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuario.Id + ".jpg");
+                    usuario.ImagenPerfil = "perfil-" + usuario.Id + ".jpg";
+                }
+
                 usuario.Nombre = txtNombre.Text;
                 usuario.Apellido = txtApellido.Text;
-
+                usuario.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
                 negocio.actualizar(usuario);
 
                 Image img = (Image)Master.FindControl("imgAvatar");
-                
                 img.ImageUrl = "~/Images/" + usuario.ImagenPerfil;
             }
             catch (Exception ex)

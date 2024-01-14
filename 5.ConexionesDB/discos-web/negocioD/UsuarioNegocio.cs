@@ -37,10 +37,11 @@ namespace negocioD
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Update USERS set imagenPerfil = @imagenPerfil, nombre = @nombre, apellido = @apellido Where id = @id");
-                datos.setearParametro("@imagenPerfil", user.ImagenPerfil);
+                datos.setearConsulta("Update USERS set imagenPerfil = @imagenPerfil, nombre = @nombre, apellido = @apellido, fechaNacimiento = @fecha Where id = @id");
+                datos.setearParametro("@imagenPerfil", user.ImagenPerfil != null ? user.ImagenPerfil : "");
                 datos.setearParametro("@nombre", user.Nombre);
                 datos.setearParametro("@apellido", user.Apellido);
+                datos.setearParametro("@fecha", user.FechaNacimiento);
                 datos.setearParametro("@id", user.Id);
 
                 datos.ejecutarAccion();
@@ -62,7 +63,7 @@ namespace negocioD
 
             try
             {
-                datos.setearConsulta("Select id, email, pass, admin, imagenPerfil, nombre, apellido from USERS Where email = @email and pass = @pass");
+                datos.setearConsulta("Select id, email, pass, admin, imagenPerfil, nombre, apellido, fechaNacimiento from USERS Where email = @email and pass = @pass");
                 datos.setearParametro("@email", usuario.Email);
                 datos.setearParametro("@pass", usuario.Pass);
 
@@ -78,7 +79,8 @@ namespace negocioD
                         usuario.Nombre = (string)datos.Lector["nombre"];
                     if (!(datos.Lector["apellido"] is DBNull))
                         usuario.Apellido = (string)datos.Lector["apellido"];
-
+                    if (!(datos.Lector["fechaNacimiento"] is DBNull))
+                        usuario.FechaNacimiento = DateTime.Parse(datos.Lector["fechaNacimiento"].ToString());
                     return true;
                 }
                 return false;
