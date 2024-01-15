@@ -42,7 +42,9 @@ namespace negocioP
                 datos.setearConsulta("Update USERS Set nombre = @nombre, apellido = @apellido, imagenPerfil = @imagen, fechaNacimiento = @fecha Where Id = @id");
                 datos.setearParametro("@nombre", user.Nombre);
                 datos.setearParametro("@apellido", user.Apellido);
-                datos.setearParametro("@imagen", user.ImagenPerfil != null ? user.ImagenPerfil : "");
+                //datos.setearParametro("@imagen", user.ImagenPerfil != null ? user.ImagenPerfil : (object)DBNull.Value);
+                /// Usamos el Null Coalescing Operator para que si es null, se guarde en la base de datos como null
+                datos.setearParametro("@imagen", (object)user.ImagenPerfil ?? DBNull.Value);
                 datos.setearParametro("@fecha", user.FechaNacimiento);
                 datos.setearParametro("@id", user.Id);
 
