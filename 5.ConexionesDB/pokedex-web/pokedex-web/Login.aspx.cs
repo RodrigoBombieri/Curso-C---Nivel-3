@@ -37,7 +37,7 @@ namespace pokedex_web
                 {
                     /// si el login es incorrecto redirecciono a la pagina de error
                     Session.Add("error", "Usuario o contraseña incorrectos");
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("Error.aspx", false);
                 }
                 
             }
@@ -45,7 +45,7 @@ namespace pokedex_web
             {
 
                 Session.Add("error", ex.ToString());
-                Response.Redirect("Error.aspx");
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

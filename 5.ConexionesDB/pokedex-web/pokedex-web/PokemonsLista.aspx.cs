@@ -111,8 +111,8 @@ namespace pokedex_web
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex);
-                throw;
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx");
             }
         }
     }

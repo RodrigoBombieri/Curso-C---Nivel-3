@@ -41,6 +41,7 @@ namespace pokedex_web
             {
 
                 Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
     }
