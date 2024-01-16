@@ -9,7 +9,7 @@
             width: 200px;
         }
     </style>
-    <h1>ECOMMERCE WEB</h1>
+    <h1>BOOMCommerce WEB</h1>
     <p>Bienvenido al Ecommerce Web de Bomba..</p>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">

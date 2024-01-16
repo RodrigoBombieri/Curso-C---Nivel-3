@@ -11,7 +11,7 @@ namespace ecommerce_web
 {
     public partial class FormularioProducto : System.Web.UI.Page
     {
-        public bool confirmaEliminar { get;set;}
+        public bool confirmaEliminar { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
@@ -57,9 +57,8 @@ namespace ecommerce_web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                throw;
-                /// redireccionar a pagina de error
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
 
         }
@@ -97,15 +96,23 @@ namespace ecommerce_web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                throw;
-                /// redireccionar a pagina de error
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
         protected void txtUrlImagen_TextChanged(object sender, EventArgs e)
         {
-            imgProducto.ImageUrl = txtUrlImagen.Text;
+            try
+            {
+                imgProducto.ImageUrl = txtUrlImagen.Text;
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -117,7 +124,7 @@ namespace ecommerce_web
         {
             try
             {
-                if(chkConfirmaEliminar.Checked)
+                if (chkConfirmaEliminar.Checked)
                 {
                     ArticuloNegocio negocio = new ArticuloNegocio();
                     negocio.eliminar(int.Parse(txtId.Text));
@@ -127,8 +134,8 @@ namespace ecommerce_web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                throw;
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }
