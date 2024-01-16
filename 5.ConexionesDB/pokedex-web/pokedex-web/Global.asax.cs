@@ -12,5 +12,16 @@ namespace pokedex_web
         protected void Application_Start(object sender, EventArgs e)
         {
         }
+
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            /// Para cualquier error que no haya sido capturado por el try catch
+            Exception exc = Server.GetLastError();
+            
+            Session.Add("error", exc.ToString());
+            ///Response.Redirect("Error.aspx");
+            Server.Transfer("Error.aspx", false);
+        }
     }
 }

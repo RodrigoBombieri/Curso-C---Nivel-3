@@ -37,53 +37,98 @@ namespace pokedex_web
 
         protected void dgvPokemons_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = dgvPokemons.SelectedDataKey.Value.ToString();
-            Response.Redirect("FormularioPokemon.aspx?id=" + id);
+            try
+            {
+                var id = dgvPokemons.SelectedDataKey.Value.ToString();
+                Response.Redirect("FormularioPokemon.aspx?id=" + id);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void dgvPokemons_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            /// Para que funcione la paginación, hay que agregar la propiedad AllowPaging="True" en el 
-            /// GridView, entonces el evento PageIndexChanging se dispara cuando se cambia de página.
-            dgvPokemons.PageIndex = e.NewPageIndex;
-            dgvPokemons.DataBind();
+            try
+            {
+                /// Para que funcione la paginación, hay que agregar la propiedad AllowPaging="True" en el 
+                /// GridView, entonces el evento PageIndexChanging se dispara cuando se cambia de página.
+                dgvPokemons.PageIndex = e.NewPageIndex;
+                dgvPokemons.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {
-            /// Si el campo de texto esta vacio, cargamos el gridview con la lista 
-            /// de pokemons que esta en session
-            List<Pokemon> lista = (List<Pokemon>)Session["listaPokemons"];
-            /// Si el campo de texto no esta vacio, filtramos la lista de pokemons 
-            /// Por nombre (minuscula o mayuscula) o por numero
-            List<Pokemon> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) || x.Numero.ToString().Contains(txtFiltro.Text));
-            /// Cargamos el gridview con la lista filtrada
-            dgvPokemons.DataSource = listaFiltrada;
-            dgvPokemons.DataBind();
+            try
+            {
+                /// Si el campo de texto esta vacio, cargamos el gridview con la lista 
+                /// de pokemons que esta en session
+                List<Pokemon> lista = (List<Pokemon>)Session["listaPokemons"];
+                /// Si el campo de texto no esta vacio, filtramos la lista de pokemons 
+                /// Por nombre (minuscula o mayuscula) o por numero
+                List<Pokemon> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()) || x.Numero.ToString().Contains(txtFiltro.Text));
+                /// Cargamos el gridview con la lista filtrada
+                dgvPokemons.DataSource = listaFiltrada;
+                dgvPokemons.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void chkFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
         {
-            // Si el checkbox esta seleccionado, habilitamos el filtro avanzado
-            filtroAvanzado = chkFiltroAvanzado.Checked;
-            // Si el filtro avanzado esta habilitado, deshabilitamos el filtro rapido
-            txtFiltro.Enabled = !filtroAvanzado;
+            try
+            {
+                // Si el checkbox esta seleccionado, habilitamos el filtro avanzado
+                filtroAvanzado = chkFiltroAvanzado.Checked;
+                // Si el filtro avanzado esta habilitado, deshabilitamos el filtro rapido
+                txtFiltro.Enabled = !filtroAvanzado;
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlCriterio.Items.Clear();
-            if (ddlCampo.SelectedItem.ToString() == "Número")
+            try
             {
-                ddlCriterio.Items.Add("Igual a");
-                ddlCriterio.Items.Add("Mayor a");
-                ddlCriterio.Items.Add("Menor a");
+                ddlCriterio.Items.Clear();
+                if (ddlCampo.SelectedItem.ToString() == "Número")
+                {
+                    ddlCriterio.Items.Add("Igual a");
+                    ddlCriterio.Items.Add("Mayor a");
+                    ddlCriterio.Items.Add("Menor a");
+                }
+                else
+                {
+                    ddlCriterio.Items.Add("Contiene");
+                    ddlCriterio.Items.Add("Empieza con");
+                    ddlCriterio.Items.Add("Termina con");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ddlCriterio.Items.Add("Contiene");
-                ddlCriterio.Items.Add("Empieza con");
-                ddlCriterio.Items.Add("Termina con");
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -111,8 +156,8 @@ namespace pokedex_web
             catch (Exception ex)
             {
 
-                Session.Add("Error", ex.ToString());
-                Response.Redirect("Error.aspx");
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }
