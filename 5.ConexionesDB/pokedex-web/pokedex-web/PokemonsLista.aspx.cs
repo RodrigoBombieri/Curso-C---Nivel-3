@@ -40,7 +40,7 @@ namespace pokedex_web
             try
             {
                 var id = dgvPokemons.SelectedDataKey.Value.ToString();
-                Response.Redirect("FormularioPokemon.aspx?id=" + id);
+                Response.Redirect("FormularioPokemon.aspx?id=" + id, false);
             }
             catch (Exception ex)
             {
