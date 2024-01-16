@@ -62,9 +62,8 @@ namespace discos_web
             catch (Exception ex)
             {
 
-                Session.Add("error", ex);
-                throw;
-                /// redireccionar a pagina de error
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
 
         }
@@ -101,9 +100,8 @@ namespace discos_web
             catch (Exception ex)
             {
 
-                Session.Add("error", ex);
-                throw;
-                /// redireccionar a pagina de error
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -130,8 +128,8 @@ namespace discos_web
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
-                throw;
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }

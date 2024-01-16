@@ -20,7 +20,7 @@ namespace discos_web
                 Session.Add("error", "se requere permisos de admin para acceder a esta pantalla");
                 Response.Redirect("Error.aspx", false);
             }
-            
+
             filtroAvanzado = false;
 
             if (!IsPostBack)
@@ -34,44 +34,89 @@ namespace discos_web
 
         protected void dgvDiscos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = dgvDiscos.SelectedDataKey.Value.ToString();
-            Response.Redirect("FormularioDisco.aspx?id=" + id);
+            try
+            {
+                var id = dgvDiscos.SelectedDataKey.Value.ToString();
+                Response.Redirect("FormularioDisco.aspx?id=" + id);
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void dgvDiscos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            dgvDiscos.PageIndex = e.NewPageIndex;
-            dgvDiscos.DataBind();
+            try
+            {
+                dgvDiscos.PageIndex = e.NewPageIndex;
+                dgvDiscos.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {
-            List<Disco> lista = (List<Disco>)Session["listaDiscos"];
-            List<Disco> listaFiltrada = lista.FindAll(x => x.Titulo.ToUpper().Contains(txtFiltro.Text.ToUpper()));
-            dgvDiscos.DataSource = listaFiltrada;
-            dgvDiscos.DataBind();
+            try
+            {
+                List<Disco> lista = (List<Disco>)Session["listaDiscos"];
+                List<Disco> listaFiltrada = lista.FindAll(x => x.Titulo.ToUpper().Contains(txtFiltro.Text.ToUpper()));
+                dgvDiscos.DataSource = listaFiltrada;
+                dgvDiscos.DataBind();
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void chkFiltroAvanzado_CheckedChanged(object sender, EventArgs e)
         {
-            filtroAvanzado = chkFiltroAvanzado.Checked;
-            txtFiltro.Enabled = !filtroAvanzado;
+            try
+            {
+                filtroAvanzado = chkFiltroAvanzado.Checked;
+                txtFiltro.Enabled = !filtroAvanzado;
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
+            }
         }
 
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlCriterio.Items.Clear();
-            if (ddlCampo.SelectedItem.ToString() == "Cantidad Canciones")
+            try
             {
-                ddlCriterio.Items.Add("Igual a");
-                ddlCriterio.Items.Add("Mayor a");
-                ddlCriterio.Items.Add("Menor a");
+                ddlCriterio.Items.Clear();
+                if (ddlCampo.SelectedItem.ToString() == "Cantidad Canciones")
+                {
+                    ddlCriterio.Items.Add("Igual a");
+                    ddlCriterio.Items.Add("Mayor a");
+                    ddlCriterio.Items.Add("Menor a");
+                }
+                else
+                {
+                    ddlCriterio.Items.Add("Contiene");
+                    ddlCriterio.Items.Add("Empieza con");
+                    ddlCriterio.Items.Add("Termina con");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ddlCriterio.Items.Add("Contiene");
-                ddlCriterio.Items.Add("Empieza con");
-                ddlCriterio.Items.Add("Termina con");
+
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
 
@@ -98,8 +143,8 @@ namespace discos_web
             catch (Exception ex)
             {
 
-                Session.Add("error", ex);
-                throw;
+                Session.Add("error", ex.Message);
+                Response.Redirect("Error.aspx", false);
             }
         }
     }
