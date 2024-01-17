@@ -9,11 +9,11 @@
             <h1>Login</h1>
             <div class="mb-3">
                 <asp:Label CssClass="form-label" runat="server" Text="Email"></asp:Label>
-                <asp:TextBox CssClass="form-control" ID="txtEmail" runat="server"></asp:TextBox>
+                <asp:TextBox CssClass="form-control" required TextMode="Email" ID="txtEmail" runat="server"></asp:TextBox>
             </div>
             <div class="mb-3">
                 <asp:Label CssClass="form-label" runat="server" Text="Passsword"></asp:Label>
-                <asp:TextBox CssClass="form-control" TextMode="Password" ID="txtPassword" runat="server"></asp:TextBox>
+                <asp:TextBox CssClass="form-control" required TextMode="Password" ID="txtPassword" runat="server"></asp:TextBox>
             </div>
             <asp:Button ID="btnIngresar" OnClick="btnIngresar_Click"  runat="server" Text="Ingresar" CssClass="btn btn-primary" />
             <a href="Default.aspx">Cancelar</a>

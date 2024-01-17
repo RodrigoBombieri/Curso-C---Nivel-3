@@ -23,6 +23,11 @@ namespace pokedex_web
 
             try
             {
+                if(Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debes completar ambos campos.");
+                    Response.Redirect("Error.aspx");
+                }
                 /// capturo los datos ingresados en el formulario
                 trainee.Email = txtEmail.Text;
                 trainee.Pass = txtPassword.Text;
@@ -41,11 +46,12 @@ namespace pokedex_web
                 }
                 
             }
+            catch(System.Threading.ThreadAbortException ex){ }
             catch (Exception ex)
             {
 
                 Session.Add("error", ex.Message);
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Error.aspx");
             }
         }
     }

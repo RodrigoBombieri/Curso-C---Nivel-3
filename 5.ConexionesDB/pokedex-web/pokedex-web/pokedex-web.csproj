@@ -155,6 +155,7 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Validacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

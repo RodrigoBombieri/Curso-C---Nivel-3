@@ -24,6 +24,12 @@ namespace pokedex_web
                 TraineeNegocio traineeNegocio = new TraineeNegocio();
                 EmailService emailService = new EmailService();
                 
+                if(!Validacion.validaTextoVacio(txtEmail) || !Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debes completar ambos campos.");
+                    Response.Redirect("Error.aspx", false);
+                }
+
                 // Cargo los datos ingresados en el formulario
                 user.Email = txtEmail.Text;
                 user.Pass = txtPassword.Text;

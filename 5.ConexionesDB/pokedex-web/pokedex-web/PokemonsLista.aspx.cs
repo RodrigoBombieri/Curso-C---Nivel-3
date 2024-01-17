@@ -18,7 +18,7 @@ namespace pokedex_web
             if (!Seguridad.esAdmin(Session["trainee"]))
             {
                 Session.Add("error", "No tiene permisos admin para acceder a esta sección");
-                Response.Redirect("Error.aspx");
+                Response.Redirect("Error.aspx", false);
             }
 
 
