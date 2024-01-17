@@ -23,6 +23,10 @@ namespace discos_web
 
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+                
                 if(Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
                 {
                     Session.Add("error", "Debe completar ambos campos.");
