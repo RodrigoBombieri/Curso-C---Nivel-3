@@ -46,6 +46,10 @@ namespace ecommerce_web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 UsuarioNegocio negocio = new UsuarioNegocio();
                 Usuario usuario = (Usuario)Session["usuario"];
 
