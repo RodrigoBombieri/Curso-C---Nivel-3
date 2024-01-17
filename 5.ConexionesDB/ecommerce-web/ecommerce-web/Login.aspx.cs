@@ -23,6 +23,13 @@ namespace ecommerce_web
 
             try
             {
+
+                if(Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debe completar ambos campos");
+                    Response.Redirect("Error.aspx");
+                }
+
                 usuario.Email = txtEmail.Text;
                 usuario.Pass = txtPassword.Text;
 
@@ -37,6 +44,7 @@ namespace ecommerce_web
                     Response.Redirect("Error.aspx", false);
                 }
             }
+            catch(System.Threading.ThreadAbortException ex) { }
             catch (Exception ex)
             {
 
