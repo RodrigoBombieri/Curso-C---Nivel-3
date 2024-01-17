@@ -14,14 +14,14 @@ namespace discos_web
             {
                 if(string.IsNullOrEmpty(texto.Text))
                 {
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
-            return true;
+            return false;
         }
     }
 }
