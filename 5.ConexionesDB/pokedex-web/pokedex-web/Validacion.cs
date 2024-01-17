@@ -16,11 +16,11 @@ namespace negocioP
             {
                 if(string.IsNullOrEmpty(texto.Text))
                 {
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
             return false;

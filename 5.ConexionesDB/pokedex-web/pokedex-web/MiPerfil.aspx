@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="pokedex_web.MiPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion{
+            color: red;
+            font-size: 12px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Mi Perfil</h1>
@@ -14,14 +20,17 @@
             <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" ControlToValidate="txtNombre" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="txtApellido" class="form-label">Apellido</label>
                 <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator CssClass="validacion" ErrorMessage="El apellido es requerido" ControlToValidate="txtApellido" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <asp:TextBox ID="txtFechaNacimiento" textMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtFechaNacimiento" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ErrorMessage="La fecha de nacimiento es requerida" ControlToValidate="txtFechaNacimiento" runat="server" />
             </div>
         </div>
         <div class="col-md-4">

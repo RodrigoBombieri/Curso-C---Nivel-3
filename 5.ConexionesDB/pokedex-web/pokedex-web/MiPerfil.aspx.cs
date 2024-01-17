@@ -43,6 +43,9 @@ namespace pokedex_web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
                 /// obtengo el usuario logueado
                 Trainee user = (Trainee)Session["trainee"];
                 TraineeNegocio negocio = new TraineeNegocio();
