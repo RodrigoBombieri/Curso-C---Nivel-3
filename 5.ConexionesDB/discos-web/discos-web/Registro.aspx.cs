@@ -24,6 +24,12 @@ namespace discos_web
                 UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
                 EmailService emailService = new EmailService();
 
+                if(Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debe completar ambos campos.");
+                    Response.Redirect("Error.aspx");
+                }
+
                 usuario.Email = txtEmail.Text;
                 usuario.Pass = txtPassword.Text;
                 usuario.Id = usuarioNegocio.insertarNuevo(usuario);
@@ -35,6 +41,7 @@ namespace discos_web
                 Response.Redirect("Default.aspx", false);
 
             }
+            catch (System.Threading.ThreadAbortException ex) { }
             catch (Exception ex)
             {
 

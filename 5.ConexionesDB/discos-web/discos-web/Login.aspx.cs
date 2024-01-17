@@ -23,6 +23,13 @@ namespace discos_web
 
             try
             {
+                if(Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debe completar ambos campos.");
+                    Response.Redirect("Error.aspx");
+                }
+
+
                 usuario.Email = txtEmail.Text;
                 usuario.Pass = txtPassword.Text;
                 /// Nos va a devolver el objeto cargado con el email y pass, y ademas al loguearse
@@ -42,6 +49,7 @@ namespace discos_web
                 }
 
             }
+            catch (System.Threading.ThreadAbortException ex) { }
             catch (Exception ex)
             {
 
