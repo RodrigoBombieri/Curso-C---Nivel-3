@@ -25,7 +25,9 @@
             <div class="mb-3">
                 <label for="txtApellido" class="form-label">Apellido</label>
                 <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control"></asp:TextBox>
-                <asp:RequiredFieldValidator ErrorMessage="El apellido es requerido" CssClass="validacion" ControlToValidate="txtApellido" runat="server" />
+                <%--<asp:RequiredFieldValidator ErrorMessage="El apellido es requerido" CssClass="validacion" ControlToValidate="txtApellido" runat="server" />--%>
+                <asp:RangeValidator ErrorMessage="fuera de rango.." CssClass="validacion" ControlToValidate="txtApellido" Type="Integer" MinimumValue="1" MaximumValue="256" runat="server" />
+                <asp:RegularExpressionValidator ErrorMessage="Formato incorrecto..." CssClass="validacion" ControlToValidate="txtApellido" ValidationExpression="^[0-9]+$" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
