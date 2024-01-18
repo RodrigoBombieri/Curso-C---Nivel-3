@@ -95,13 +95,13 @@ namespace ecommerce_web
                 {
                     negocio.agregarConSP(nuevo);
                 }
-                Response.Redirect("ProductosLista.aspx");
+                Response.Redirect("ProductosLista.aspx", false);
 
             }
             catch (Exception ex)
             {
                 Session.Add("error", ex.Message);
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Error.aspx");
             }
         }
 
