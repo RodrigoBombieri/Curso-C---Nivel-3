@@ -54,6 +54,7 @@ namespace pokedex_web
         {
             try
             {
+                dgvPokemons.DataSource = Session["listaPokemons"];
                 /// Para que funcione la paginación, hay que agregar la propiedad AllowPaging="True" en el 
                 /// GridView, entonces el evento PageIndexChanging se dispara cuando se cambia de página.
                 dgvPokemons.PageIndex = e.NewPageIndex;

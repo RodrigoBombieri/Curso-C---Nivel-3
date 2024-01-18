@@ -88,6 +88,10 @@ namespace pokedex_web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 Pokemon nuevo = new Pokemon();
                 PokemonNegocio negocio = new PokemonNegocio();
 

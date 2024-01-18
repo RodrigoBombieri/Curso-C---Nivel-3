@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioPokemon.aspx.cs" Inherits="pokedex_web.FormularioPokemon" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion{
+            color: red;
+            font-size: 12px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Formulario</h1>
@@ -18,6 +24,7 @@
             <div class="mb-3">
                 <label for="txtNumero" class="form-label">Numero: </label>
                 <asp:TextBox ID="txtNumero" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ErrorMessage="Debes ingresar un número.." CssClass="validacion" ControlToValidate="txtNumero" ValidationExpression="^[0-9]+$" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="ddlTipo" class="form-label">Tipo: </label>
