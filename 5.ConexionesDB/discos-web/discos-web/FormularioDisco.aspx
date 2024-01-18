@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="FormularioDisco.aspx.cs" Inherits="discos_web.FormularioDisco" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion{
+            color:red;
+            font-size: 12px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Formulario</h1>
@@ -18,6 +24,7 @@
             <div class="mb-3">
                 <label for="txtCantidadCanciones" class="form-label">Cantidad de Canciones: </label>
                 <asp:TextBox ID="txtCantidadCanciones" CssClass="form-control" runat="server" />
+                <asp:RegularExpressionValidator ErrorMessage="Debes ingresar solo números." CssClass="validacion" ControlToValidate="txtCantidadCanciones" ValidationExpression="^[0-9]+$" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="ddlEstilo" class="form-label">Estilo: </label>

@@ -72,6 +72,10 @@ namespace discos_web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 Disco nuevo = new Disco();
                 DiscoNegocio negocio = new DiscoNegocio();
 
@@ -94,14 +98,14 @@ namespace discos_web
                 {
                     negocio.agregarConSP(nuevo);
                 }
-                Response.Redirect("DiscosLista.aspx");
+                Response.Redirect("DiscosLista.aspx", false);
 
             }
             catch (Exception ex)
             {
 
                 Session.Add("error", ex.Message);
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Error.aspx");
             }
         }
 

@@ -51,6 +51,7 @@ namespace discos_web
         {
             try
             {
+                dgvDiscos.DataSource = Session["listaDiscos"];
                 dgvDiscos.PageIndex = e.NewPageIndex;
                 dgvDiscos.DataBind();
             }
