@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="FormularioProducto.aspx.cs" Inherits="ecommerce_web.FormularioProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .validacion{
+            color: red;
+            font-size: 12px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -29,6 +35,7 @@
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio: </label>
                 <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RangeValidator ErrorMessage="Fuera de rango..." CssClass="validacion" ControlToValidate="txtPrecio" Type="Double" MinimumValue="0" MaximumValue="700000" runat="server" />  
             </div>
 
             <div class="mb-3">

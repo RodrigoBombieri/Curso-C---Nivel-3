@@ -50,6 +50,7 @@ namespace ecommerce_web
         {
             try
             {
+                dgvProductos.DataSource = Session["listaArticulos"];
                 dgvProductos.PageIndex = e.NewPageIndex;
                 dgvProductos.DataBind();
             }
@@ -57,7 +58,7 @@ namespace ecommerce_web
             {
 
                 Session.Add("error", ex.Message);
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Error.aspx");
             }
         }
 

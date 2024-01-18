@@ -23,6 +23,9 @@ namespace ecommerce_web
 
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
 
                 if(Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
                 {
