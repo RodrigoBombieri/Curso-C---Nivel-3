@@ -2,11 +2,28 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .validacion{
+        .validacion {
             color: red;
             font-size: 12px;
         }
     </style>
+    <script>
+        function validar() {
+            /// Capturamos los controles
+            const txtApellido = document.getElementById("txtApellido");
+            const txtNombre = document.getElementById("txtNombre");
+            if (txtApellido.value == "" ) {
+                //alert("El apellido es requerido");
+                txtApellido.classList.add("is-invalid");
+                txtApellido.classList.remove("is-valid");
+                txtNombre.classList.add("is-valid");
+                return false;
+            }
+            txtApellido.classList.remove("is-invalid");
+            txtApellido.classList.add("is-valid");
+            return true;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Mi Perfil</h1>
@@ -19,15 +36,15 @@
             </div>
             <div class="mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>
-                <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
-                <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="validacion" ControlToValidate="txtNombre" runat="server" />
+                <asp:TextBox ID="txtNombre" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
+                <%--<asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="validacion" ControlToValidate="txtNombre" runat="server" />--%>
             </div>
             <div class="mb-3">
                 <label for="txtApellido" class="form-label">Apellido</label>
-                <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtApellido" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
                 <%--<asp:RequiredFieldValidator ErrorMessage="El apellido es requerido" CssClass="validacion" ControlToValidate="txtApellido" runat="server" />--%>
-                <asp:RangeValidator ErrorMessage="fuera de rango.." CssClass="validacion" ControlToValidate="txtApellido" Type="Integer" MinimumValue="1" MaximumValue="256" runat="server" />
-                <asp:RegularExpressionValidator ErrorMessage="Formato incorrecto..." CssClass="validacion" ControlToValidate="txtApellido" ValidationExpression="^[0-9]+$" runat="server" />
+                <%--<asp:RangeValidator ErrorMessage="fuera de rango.." CssClass="validacion" ControlToValidate="txtApellido" Type="Integer" MinimumValue="1" MaximumValue="256" runat="server" />
+                <asp:RegularExpressionValidator ErrorMessage="Formato incorrecto..." CssClass="validacion" ControlToValidate="txtApellido" ValidationExpression="^[0-9]+$" runat="server" />--%>
             </div>
             <div class="mb-3">
                 <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
@@ -45,7 +62,7 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <asp:Button ID="btnGuardar" OnClick="btnGuardar_Click" CssClass="btn btn-primary" runat="server" Text="Guardar" />
+            <asp:Button ID="btnGuardar" OnClick="btnGuardar_Click" OnClientClick="return validar()" CssClass="btn btn-primary" runat="server" Text="Guardar" />
             <a href="/">Regresar</a>
         </div>
     </div>

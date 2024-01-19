@@ -75,7 +75,7 @@ namespace pokedex_web
 
                 Image img = (Image)Master.FindControl("imgAvatar");
                 /// PARA LEER IMG SE USA LA ~/ Y EL NOMBRE DE LA CARPETA
-                img.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                img.ImageUrl = "~/Images/" + user.ImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
 
 
             }
