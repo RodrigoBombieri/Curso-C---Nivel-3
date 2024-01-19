@@ -20,11 +20,15 @@ namespace pokedex_web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 Trainee user = new Trainee();
                 TraineeNegocio traineeNegocio = new TraineeNegocio();
                 EmailService emailService = new EmailService();
-                
-                if(!Validacion.validaTextoVacio(txtEmail) || !Validacion.validaTextoVacio(txtPassword))
+
+                if (!Validacion.validaTextoVacio(txtEmail) || !Validacion.validaTextoVacio(txtPassword))
                 {
                     Session.Add("error", "Debes completar ambos campos.");
                     Response.Redirect("Error.aspx", false);
