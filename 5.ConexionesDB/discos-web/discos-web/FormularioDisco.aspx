@@ -2,11 +2,32 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .validacion{
-            color:red;
+        .validacion {
+            color: red;
             font-size: 12px;
         }
     </style>
+    <script>
+        function validar() {
+            var campos = ["txtTitulo", "txtCantidadCanciones"];
+            var esValido = true;
+
+            campos.forEach(function (campoID) {
+                var campo = document.getElementById(campoID);
+                if (campo.value == "") {
+                    campo.classList.add("is-invalid");
+                    campo.classList.remove("is-valid");
+                    esValido = false;
+                } else {
+                    campo.classList.remove("is-invalid");
+                    campo.classList.add("is-valid");
+                }
+            });
+            return esValido;
+        }
+    </script>
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Formulario</h1>
@@ -19,12 +40,14 @@
             </div>
             <div class="mb-3">
                 <label for="txtTitulo" class="form-label">Titulo: </label>
-                <asp:TextBox ID="txtTitulo" CssClass="form-control" runat="server" />
+                <asp:TextBox ID="txtTitulo" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)" />
+                <asp:RequiredFieldValidator ErrorMessage="El titulo es requerido." ControlToValidate="txtTitulo" ForeColor="DarkRed" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="txtCantidadCanciones" class="form-label">Cantidad de Canciones: </label>
-                <asp:TextBox ID="txtCantidadCanciones" CssClass="form-control" runat="server" />
+                <asp:TextBox ID="txtCantidadCanciones" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)" />
                 <asp:RegularExpressionValidator ErrorMessage="Debes ingresar solo números." CssClass="validacion" ControlToValidate="txtCantidadCanciones" ValidationExpression="^[0-9]+$" runat="server" />
+                <asp:RequiredFieldValidator ErrorMessage="La cantidad de canciones es requerida." ControlToValidate="txtCantidadCanciones" ForeColor="DarkRed" runat="server" />
             </div>
             <div class="mb-3">
                 <label for="ddlEstilo" class="form-label">Estilo: </label>
@@ -62,7 +85,8 @@
                     <div class="mb-3">
                         <asp:Button ID="btnEliminar" runat="server" OnClick="btnEliminar_Click" CssClass="btn btn-danger" Text="Eliminar" />
                     </div>
-                    <%if (confirmaEliminar) {%>
+                    <%if (confirmaEliminar)
+                        {%>
                     <div class="mb-3">
                         <asp:CheckBox ID="chkConfirmaEliminar" Text="Confirmar Eliminacion" runat="server" />
                         <asp:Button ID="btnConfirmaEliminar" runat="server" OnClick="btnConfirmaEliminar_Click" CssClass="btn btn-outline-danger" Text="Eliminar" />

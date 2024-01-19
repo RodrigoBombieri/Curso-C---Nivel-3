@@ -37,13 +37,13 @@ namespace discos_web
             try
             {
                 var id = dgvDiscos.SelectedDataKey.Value.ToString();
-                Response.Redirect("FormularioDisco.aspx?id=" + id);
+                Response.Redirect("FormularioDisco.aspx?id=" + id, false);
             }
             catch (Exception ex)
             {
 
                 Session.Add("error", ex.Message);
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Error.aspx");
             }
         }
 
