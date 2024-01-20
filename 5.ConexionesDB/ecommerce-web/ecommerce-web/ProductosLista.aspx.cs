@@ -36,7 +36,7 @@ namespace ecommerce_web
             try
             {
                 var id = dgvProductos.SelectedDataKey.Value.ToString();
-                Response.Redirect("FormularioProducto.aspx?id=" + id);
+                Response.Redirect("FormularioProducto.aspx?id=" + id, false);
             }
             catch (Exception ex)
             {

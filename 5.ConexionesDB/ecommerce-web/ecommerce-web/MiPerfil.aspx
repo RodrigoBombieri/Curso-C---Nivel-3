@@ -7,6 +7,26 @@
             font-size: 12px;
         }
     </style>
+    <script>
+        function validar() {
+            var campos = ["txtNombre", "txtApellido", "txtFechaNacimiento"];
+            var esValido = true;
+
+            campos.forEach(function (campoID) {
+                var campo = document.getElementById(campoID);
+                if (campo.value == "") {
+                    campo.classList.add("is-invalid");
+                    campo.classList.remove("is-valid");
+                    esValido = false;
+                } else {
+                    campo.classList.remove("is-invalid");
+                    campo.classList.add("is-valid");
+                }
+            });
+
+            return esValido;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Mi Perfil</h1>
@@ -19,18 +39,18 @@
             </div>
             <div class="mb-3">
                 <label id="lblNombre" class="form-label">Nombre</label>
-                <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="validacion" ControlToValidate="txtNombre" runat="server" />
+                <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)"></asp:TextBox>
+                <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido." CssClass="validacion" ControlToValidate="txtNombre" runat="server" />
             </div>
             <div class="mb-3">
                 <label id="lblApellido" class="form-label">Apellido</label>
-                <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ErrorMessage="El apellido es requerido" CssClass="validacion" ControlToValidate="txtApellido" runat="server" />
+                <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)"></asp:TextBox>
+                <asp:RequiredFieldValidator ErrorMessage="El apellido es requerido." CssClass="validacion" ControlToValidate="txtApellido" runat="server" />
             </div>
             <div class="mb-3">
                 <label id="lblFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <asp:TextBox ID="txtFechaNacimiento" TextMode="Date" CssClass="form-control" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ErrorMessage="La fecha de nacimiento es requerida" CssClass="validacion" ControlToValidate="txtFechaNacimiento" runat="server" />
+                <asp:TextBox ID="txtFechaNacimiento" TextMode="Date" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)"></asp:TextBox>
+                <asp:RequiredFieldValidator ErrorMessage="La fecha de nacimiento es requerida." CssClass="validacion" ControlToValidate="txtFechaNacimiento" runat="server" />
             </div>
         </div>
         <div class="col-md-4">
