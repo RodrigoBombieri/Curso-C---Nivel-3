@@ -23,12 +23,5 @@ namespace pokedex_web
                 repRepeater.DataBind();
             }
         }
-
-        protected void btnEjemplo_Click(object sender, EventArgs e)
-        {
-            /// Capturamos el valor del CommandArgument del botón que se clickeó
-            /// Hacemos un casteo explícito a Button para poder acceder a la propiedad CommandArgument
-            string valor = ((Button)sender).CommandArgument;
-        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominioP;
+using negocioP;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +11,11 @@ namespace pokedex_web
 {
     public partial class Favoritos : System.Web.UI.Page
     {
+       
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+
 
         }
     }

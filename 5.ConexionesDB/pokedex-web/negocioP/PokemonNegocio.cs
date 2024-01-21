@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominioP;
 using System.Globalization;
+using System.Collections;
 
 namespace negocioP
 {
@@ -29,12 +30,12 @@ namespace negocioP
                 comando.CommandType = System.Data.CommandType.Text;
                 // aqui colocamos la consulta que queremos hacerle a la DB.
                 comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo from POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo and D.Id = P.IdDebilidad ";
-                if(id != "")
+                if (id != "")
                 {
                     /// Si trae un id, agregamos el filtro a la consulta.
                     /// va a devolver del listado un solo pokemon, el que tenga el id que le pasamos.
                     comando.CommandText += " and P.Id = " + id;
-                }   
+                }
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -333,17 +334,17 @@ namespace negocioP
 
                     }
                 }
-                
+
                 if (estado == "Inactivo")
                 {
                     consulta += " and P.Activo = 0";
                 }
-                else if(estado == "Activo")
+                else if (estado == "Activo")
                 {
                     consulta += " and P.Activo = 1";
                 }
-                
-                
+
+
                 // seteamos con la consulta que armamos arriba.
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
