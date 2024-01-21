@@ -33,9 +33,6 @@
                         <img src="<%#Eval("UrlImagenTapa") %>" class="card-img-top" alt="Tapa del disco">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Titulo") %></h5>
-                            <p class="card-text">Cantidad de Canciones: <%#Eval("CantidadCanciones") %></p>
-                            <p class="card-text">Estilo: <%#Eval("Estilo.Descripcion") %></p>
-                            <p class="card-text">Edicion: <%#Eval("Edicion.Descripcion")%></p>
                             <a href="DetalleDisco.aspx?id=<%#Eval("Id") %>">Ver Detalle</a>
                         </div>
                     </div>
