@@ -47,11 +47,6 @@
                 <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)"></asp:TextBox>
                 <asp:RequiredFieldValidator ErrorMessage="El apellido es requerido." CssClass="validacion" ControlToValidate="txtApellido" runat="server" />
             </div>
-            <div class="mb-3">
-                <label id="lblFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <asp:TextBox ID="txtFechaNacimiento" TextMode="Date" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)"></asp:TextBox>
-                <asp:RequiredFieldValidator ErrorMessage="La fecha de nacimiento es requerida." CssClass="validacion" ControlToValidate="txtFechaNacimiento" runat="server" />
-            </div>
         </div>
         <div class="col-md-4">
             <div class="mb-3">

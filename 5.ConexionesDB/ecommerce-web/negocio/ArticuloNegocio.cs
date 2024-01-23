@@ -20,7 +20,7 @@ namespace negocio
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
+                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, A.IdMarca, A.IdCategoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C where A.IdMarca = M.Id and A.IdCategoria = C.Id ";
                 
@@ -146,10 +146,10 @@ namespace negocio
                 datos.setearProcedimiento("storedAltaArticulo");
                 datos.setearParametro("@codigo", nuevo.Codigo);
                 datos.setearParametro("@nombre", nuevo.Nombre);
-                datos.setearParametro("@desc", nuevo.Descripcion);
+                datos.setearParametro("@descripcion", nuevo.Descripcion);
                 datos.setearParametro("@idMarca", nuevo.Marca.Id);
                 datos.setearParametro("@idCategoria", nuevo.Categoria.Id);
-                datos.setearParametro("@img", nuevo.UrlImagen);
+                datos.setearParametro("@imagen", nuevo.UrlImagen);
                 datos.setearParametro("@precio", nuevo.Precio);
                 datos.ejecutarAccion();
             }
@@ -207,7 +207,7 @@ namespace negocio
                 datos.setearParametro("@descripcion", artic.Descripcion);
                 datos.setearParametro("@idMarca", artic.Marca.Id);
                 datos.setearParametro("@idCategoria", artic.Categoria.Id);
-                datos.setearParametro("@img", artic.UrlImagen);
+                datos.setearParametro("@imagen", artic.UrlImagen);
                 datos.setearParametro("@precio", artic.Precio);
                 datos.setearParametro("@id", artic.Id);
 

@@ -33,11 +33,10 @@ namespace negocio
 			AccesoDatos datos = new AccesoDatos();
 			try
 			{
-				datos.setearConsulta("Update USERS set nombre = @nombre, apellido = @apellido, imagenPerfil = @imagen, fechaNacimiento = @fecha Where id = @id");
+				datos.setearConsulta("Update USERS set nombre = @nombre, apellido = @apellido, urlImagenPerfil = @imagen Where id = @id");
 				datos.setearParametro("@nombre", user.Nombre);
 				datos.setearParametro("@apellido", user.Apellido);
 				datos.setearParametro("@imagen", (object)user.ImagenPerfil ?? DBNull.Value);
-				datos.setearParametro("@fecha", user.FechaNacimiento);
 				datos.setearParametro("@id", user.Id);
 
 				datos.ejecutarAccion();
@@ -59,7 +58,7 @@ namespace negocio
 
 			try
 			{
-				datos.setearConsulta("Select id, email, pass, admin, nombre, apellido, imagenPerfil, fechaNacimiento from USERS Where email = @email And pass = @pass");
+				datos.setearConsulta("Select id, email, pass, admin, nombre, apellido, urlImagenPerfil from USERS Where email = @email And pass = @pass");
 				datos.setearParametro("@email", usuario.Email);
 				datos.setearParametro("@pass", usuario.Pass);
 				datos.ejecutarLectura();
@@ -72,10 +71,10 @@ namespace negocio
 						usuario.Nombre = (string)datos.Lector["nombre"];
                     if (!(datos.Lector["apellido"] is DBNull))
                         usuario.Apellido = (string)datos.Lector["apellido"];
-                    if (!(datos.Lector["imagenPerfil"] is DBNull))
-                        usuario.ImagenPerfil = (string)datos.Lector["imagenPerfil"];
-					if (!(datos.Lector["fechaNacimiento"] is DBNull))
-						usuario.FechaNacimiento = DateTime.Parse(datos.Lector["fechaNacimiento"].ToString());
+                    if (!(datos.Lector["urlImagenPerfil"] is DBNull))
+                        usuario.ImagenPerfil = (string)datos.Lector["urlImagenPerfil"];
+					//if (!(datos.Lector["fechaNacimiento"] is DBNull))
+					//	usuario.FechaNacimiento = DateTime.Parse(datos.Lector["fechaNacimiento"].ToString());
 					return true;
 				}
 				return false;

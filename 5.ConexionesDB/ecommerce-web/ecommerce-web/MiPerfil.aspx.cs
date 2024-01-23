@@ -25,10 +25,10 @@ namespace ecommerce_web
                         txtEmail.ReadOnly = true;
                         txtNombre.Text = user.Nombre;
                         txtApellido.Text = user.Apellido;
-                        txtFechaNacimiento.Text = user.FechaNacimiento.ToString("yyyy-MM-dd");
+                        
                         if (!string.IsNullOrEmpty(user.ImagenPerfil))
                         {
-                            imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil;
+                            imgNuevoPerfil.ImageUrl = "~/Images/" + user.ImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
                         }
                     }
                 }
@@ -62,11 +62,11 @@ namespace ecommerce_web
 
                 usuario.Nombre = txtNombre.Text;
                 usuario.Apellido = txtApellido.Text;
-                usuario.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
+
                 negocio.actualizar(usuario);
 
                 Image img = (Image)Master.FindControl("imgAvatar");
-                img.ImageUrl = "~/Images/" + usuario.ImagenPerfil;
+                img.ImageUrl = "~/Images/" + usuario.ImagenPerfil + "?v=" + DateTime.Now.Ticks.ToString();
 
             }
             catch (Exception ex)

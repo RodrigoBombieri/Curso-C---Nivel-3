@@ -69,7 +69,6 @@
             <asp:BoundField DataField="Categoria" HeaderText="Codigo" />
             <asp:ImageField DataImageUrlField="UrlImagen" ControlStyle-Height="100px" ControlStyle-Width="100px" HeaderText="Imagen" />
             <asp:BoundField DataField="Precio" HeaderText="Precio" />
-            <asp:CommandField ShowSelectButton="true" SelectText="Ver Detalle"  HeaderText="Ver Detalle"/>
             <asp:CommandField ShowSelectButton="true" SelectText="✍︎"  HeaderText="Accion"/>
         </Columns>
     </asp:GridView>
