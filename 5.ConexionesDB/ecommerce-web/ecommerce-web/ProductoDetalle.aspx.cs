@@ -29,12 +29,18 @@ namespace ecommerce_web
 
         public static string ObtenerIdUsuario()
         {
-            // Lógica para obtener el ID del usuario logueado (puedes cambiar esto según tu método de autenticación)
-            // Por ejemplo, si estás usando Forms Authentication:
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            // Obtener el usuario de la sesión
+            Usuario usuario = HttpContext.Current.Session["usuario"] as Usuario;
+
+            // Verificar si el usuario está autenticado
+            if (Seguridad.sesionActiva(usuario))
             {
-                return HttpContext.Current.User.Identity.Name; // Usar el nombre del usuario como ID temporalmente
+                // Si está autenticado, devuelve el ID del usuario
+                return usuario.Id.ToString();
             }
+
+            // Si el usuario no está autenticado o no hay información de usuario en la sesión,
+            // devuelve una cadena vacía
             return string.Empty;
         }
 

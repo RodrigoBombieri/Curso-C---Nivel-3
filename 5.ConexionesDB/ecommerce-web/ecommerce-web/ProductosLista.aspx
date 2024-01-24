@@ -3,6 +3,101 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .col-6 {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+        .mb-3 {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn-accion {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-accion:hover {
+            background-color: #218838;
+        }
+
+        .btn-nuevo {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-nuevo:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
     <h1>Lista de Productos con Store Procedure</h1>
     <div class="row">
         <div class="col-6">
@@ -68,9 +163,9 @@
             <asp:BoundField DataField="Marca" HeaderText="Codigo" />
             <asp:BoundField DataField="Categoria" HeaderText="Codigo" />
             <asp:ImageField DataImageUrlField="UrlImagen" ControlStyle-Height="100px" ControlStyle-Width="100px" HeaderText="Imagen" />
-            <asp:BoundField DataField="Precio" HeaderText="Precio" />
+            <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="{0:F2}" />
             <asp:CommandField ShowSelectButton="true" SelectText="✍︎"  HeaderText="Accion"/>
         </Columns>
     </asp:GridView>
-    <a href="FormularioProducto.aspx" class="btn btn-primary">Nuevo Producto</a>
+    <a href="FormularioProducto.aspx" class="btn btn-nuevo">Nuevo Producto</a>
 </asp:Content>

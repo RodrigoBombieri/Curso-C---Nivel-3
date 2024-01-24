@@ -33,11 +33,12 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            margin-bottom: 20px;   
         }
 
         .mb-3 {
             margin-bottom: 15px;
+            text-align: center;
         }
 
         .card {
@@ -89,6 +90,11 @@
             .star.active {
                 color: gold;
             }
+
+        .imgDetalle{
+            width: 150px;
+            height: auto;
+        }
     </style>
 </asp:Content>
 
@@ -102,7 +108,7 @@
             <div class="col-6">
                 <div class="mb-3">
                     <div class="card">
-                        <img src="<%: articulo.UrlImagen %>" class="card-img-top" alt=".." />
+                        <img src="<%: articulo.UrlImagen %>" class="card-img-top imgDetalle mx-auto d-block" alt=".." />
                         <div class="card-body">
                             <h5 class="card-title"><%: articulo.Nombre %></h5>
                         </div>

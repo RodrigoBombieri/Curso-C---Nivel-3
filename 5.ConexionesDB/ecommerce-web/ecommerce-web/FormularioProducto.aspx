@@ -1,12 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="FormularioProducto.aspx.cs" Inherits="ecommerce_web.FormularioProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .validacion {
-            color: red;
-            font-size: 12px;
-        }
-    </style>
     <script>
         function validar() {
             var campos = ["txtNombre", "txtCodigo", "txtPrecio", "txtDescripcion", "txtUrlImagen"];
@@ -26,6 +20,7 @@
             return esValido;
         }
     </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -55,7 +50,7 @@
             </div>
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio: </label>
-                <asp:TextBox ID="txtPrecio" CssClass="form-control"  runat="server" ClientIDMode="Static" oninput="validar(this)"></asp:TextBox>
+                <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server" ClientIDMode="Static" oninput="validar(this)"></asp:TextBox>
                 <asp:RangeValidator ErrorMessage="Fuera de rango..." CssClass="validacion" ControlToValidate="txtPrecio" Type="Double" MinimumValue="0" MaximumValue="70000000" runat="server" />
                 <asp:RequiredFieldValidator ErrorMessage="El precio es requerido." ControlToValidate="txtPrecio" ForeColor="DarkRed" runat="server" />
             </div>
@@ -82,7 +77,7 @@
                             ClientIDMode="Static" oninput="validar(this)" />
                     </div>
                     <asp:Image ImageUrl="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
-                        ID="imgProducto" runat="server" Width="60%" />
+                        ID="imgProducto" runat="server" Width="30%" />
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
