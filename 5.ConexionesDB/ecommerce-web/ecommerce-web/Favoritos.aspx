@@ -28,7 +28,7 @@
                             <p class="card-text">Precio: $<%#Eval("Precio") %></p>
                             <a href="ProductoDetalle.aspx?id=<%#Eval("Id") %>">Ver Detalle</a>
                             <asp:Button ID="btnEliminarFav" CssClass="btn" runat="server" Text="❌"
-                              CommandName="articuloId" CommandArgument='<%#Eval("Id") %>'  OnClick="btnEliminarFav_Click"  />
+                              CommandName="ArticuloId" CommandArgument='<%#Eval("Id") %>' AutoPostBack="true"  OnClick="btnEliminarFav_Click"  />
                         </div>
                     </div>
                 </div>

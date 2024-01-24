@@ -14,15 +14,12 @@ namespace ecommerce_web
         public List<Articulo> listaProductos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.Validate();
-            if (!IsValid)
-                return;
-
-
-            Usuario user = (Usuario)Session["usuario"];
+            if (!IsPostBack)
+            {
+                Usuario user = (Usuario)Session["usuario"];
             string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
 
-            if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int articuloId))
+            if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idArticulo))
             {
                 ArticuloFavoritoNegocio negocio = new ArticuloFavoritoNegocio();
                 ArticuloFavorito nuevo = new ArticuloFavorito();
@@ -53,23 +50,24 @@ namespace ecommerce_web
                 Session.Add("error", "Error al cargar articulos favoritos");
                 Response.Redirect("Error.aspx");
             }
+
+            }
         }
 
         protected void btnEliminarFav_Click(object sender, EventArgs e)
         {
             Usuario user = (Usuario)Session["usuario"];
             ArticuloFavoritoNegocio negocio = new ArticuloFavoritoNegocio();
-            
-            if (!IsPostBack)
-            {
-                int idArticulo = int.Parse(((Button)sender).CommandArgument);
-                int idUser = user.Id;
 
-                negocio.eliminarFavorito(idArticulo, idUser);
 
-                Page_Load(sender, e);
+            int idArticulo = int.Parse(((Button)sender).CommandArgument);
+            int idUser = user.Id;
 
-            }
+            negocio.eliminarFavorito(idArticulo, idUser);
+
+            Response.Redirect("Favoritos.aspx", false);
+
+
         }
 
 

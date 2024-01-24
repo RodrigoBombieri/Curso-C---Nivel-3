@@ -82,7 +82,7 @@ namespace negocio
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                datos.setearConsulta("Delete from FAVORITOS Where IdArticulo = @idArticulo AND IdUser = @idUser)");
+                datos.setearConsulta("Delete from FAVORITOS Where IdArticulo = @idArticulo AND IdUser = @idUser");
                 datos.setearParametro("idArticulo", idArticulo);
                 datos.setearParametro("idUser", idUser);
                 datos.ejecutarLectura();
