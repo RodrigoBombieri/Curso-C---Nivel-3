@@ -26,5 +26,17 @@ namespace ecommerce_web
         {
             Response.Redirect("Default.aspx");
         }
+
+        public static string ObtenerIdUsuario()
+        {
+            // Lógica para obtener el ID del usuario logueado (puedes cambiar esto según tu método de autenticación)
+            // Por ejemplo, si estás usando Forms Authentication:
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                return HttpContext.Current.User.Identity.Name; // Usar el nombre del usuario como ID temporalmente
+            }
+            return string.Empty;
+        }
+
     }
 }

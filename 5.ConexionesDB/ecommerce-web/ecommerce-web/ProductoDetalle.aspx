@@ -74,9 +74,21 @@
             cursor: pointer;
         }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .star {
+            text-decoration: none;
+            font-size: 25px;
+            color: darkcyan;
+            transition: color 0.3s;
         }
+
+            .star:hover,
+            .star.active {
+                color: gold;
+            }
     </style>
 </asp:Content>
 
@@ -85,7 +97,8 @@
         <h1>Detalle Producto</h1>
 
         <div class="row">
-            <% foreach (dominio.Articulo articulo in ListaArticulos) { %>
+            <% foreach (dominio.Articulo articulo in ListaArticulos)
+                { %>
             <div class="col-6">
                 <div class="mb-3">
                     <div class="card">
@@ -105,7 +118,7 @@
                             <p class="card-text">Marca: <%: articulo.Marca.Descripcion %></p>
                             <p class="card-text">Categoria: <%: articulo.Categoria.Descripcion %></p>
                             <p class="card-text">Precio: <%: articulo.Precio %></p>
-                            <a href="Favoritos.aspx?id=<%: articulo.Id %>" style="text-decoration:none; font-size: 25px; color: darkcyan;" title="Agregar a Favoritos!"> ★ </a>
+                            <a href="Favoritos.aspx?id=<%: articulo.Id %>&usuario=<%: ObtenerIdUsuario() %>" class="star" title="Agregar a Favoritos!">★</a>
                         </div>
                     </div>
                 </div>
