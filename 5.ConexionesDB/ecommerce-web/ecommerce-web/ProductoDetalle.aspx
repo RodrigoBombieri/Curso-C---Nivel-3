@@ -123,7 +123,7 @@
                             <p class="card-text">Descripcion: <%: articulo.Descripcion %></p>
                             <p class="card-text">Marca: <%: articulo.Marca.Descripcion %></p>
                             <p class="card-text">Categoria: <%: articulo.Categoria.Descripcion %></p>
-                            <p class="card-text">Precio: <%: articulo.Precio %></p>
+                            <p class="card-text">Precio: $<%: articulo.Precio %></p>
                             <a href="Favoritos.aspx?id=<%: articulo.Id %>&usuario=<%: ObtenerIdUsuario() %>" class="star" title="Agregar a Favoritos!">★</a>
                         </div>
                     </div>
