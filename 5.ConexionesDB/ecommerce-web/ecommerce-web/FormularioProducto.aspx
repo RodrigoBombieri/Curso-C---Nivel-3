@@ -21,6 +21,7 @@
         }
     </script>
     <style>
+        /* Estilos generales */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
@@ -41,17 +42,20 @@
 
         .row {
             display: flex;
+            flex-wrap: wrap; /* Ajusta a varias filas en dispositivos pequeños */
             justify-content: space-between;
             margin-bottom: 20px;
         }
 
         .col-6 {
-            width: 48%;
+            width: 50%; /* Ocupa el 100% del ancho en dispositivos móviles */
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            margin-top: 20px;
+            text-align: center; 
         }
 
         .mb-3 {
@@ -102,7 +106,7 @@
         }
 
         .imgProducto {
-            width: 200px;
+            width: 100%; /* Ajusta el ancho al 100% */
             max-width: 300px;
             height: auto;
         }
@@ -123,6 +127,13 @@
 
         .form-control.is-valid {
             border-color: #28a745;
+        }
+
+        /* Estilos específicos para dispositivos móviles */
+        @media only screen and (max-width: 768px) {
+            .col-6 {
+                width: 100%; /* Ocupa el 100% del ancho en dispositivos móviles */
+            }
         }
     </style>
 

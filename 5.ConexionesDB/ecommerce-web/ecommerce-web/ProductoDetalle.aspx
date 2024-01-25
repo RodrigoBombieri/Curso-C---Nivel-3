@@ -28,12 +28,12 @@
         }
 
         .col-6 {
-            width: 48%;
+            width: 40%; /* En pantallas pequeñas, ocupa el 100% del ancho */
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;   
+            margin-bottom: 20px;
         }
 
         .mb-3 {
@@ -91,11 +91,19 @@
                 color: gold;
             }
 
-        .imgDetalle{
-            width: 150px;
+        .imgDetalle {
+            width: 100%; /* Asegura que la imagen se ajuste al ancho del contenedor */
             height: auto;
         }
+
+        @media only screen and (max-width: 768px) {
+            .col-6 {
+                width: 100%; /* En pantallas pequeñas, ocupa el 100% del ancho */
+                margin-bottom: 20px;
+            }
+        }
     </style>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="ecommerce_web.Registro" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -10,7 +11,7 @@
         }
 
         .container {
-            width: 80%;
+            width: 80vw;
             margin: auto;
             overflow: hidden;
         }
@@ -28,11 +29,13 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            width: 50%;
         }
 
         h1 {
             color: #333;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .form-input {
@@ -59,9 +62,9 @@
             cursor: pointer;
         }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
 
         a {
             display: block;
@@ -71,13 +74,19 @@
             text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
-        }
+            a:hover {
+                text-decoration: underline;
+            }
 
         .validacion {
             color: red;
             font-size: 12px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100%;
+            }
         }
     </style>
 </asp:Content>

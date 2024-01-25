@@ -10,7 +10,7 @@
         }
 
         .container {
-            width: 80%;
+            width: 80vw;
             margin: auto;
             overflow: hidden;
         }
@@ -28,6 +28,7 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            width: 50%
         }
 
         h1 {
@@ -78,6 +79,17 @@
         .validacion {
             color: red;
             font-size: 12px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .col-4 {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .btn-primary {
+                margin-top: 15px;
+            }
         }
     </style>
 </asp:Content>

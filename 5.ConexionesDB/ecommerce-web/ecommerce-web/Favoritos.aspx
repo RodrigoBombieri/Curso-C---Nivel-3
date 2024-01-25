@@ -10,7 +10,7 @@
         }
 
         .container {
-            width: 80%;
+            width: 100vw;
             margin: auto;
             overflow: hidden;
         }
@@ -28,17 +28,18 @@
         .row {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around; /* Ajustado para centrar en dispositivos móviles */
             margin-bottom: 20px;
         }
 
         .col {
-            width: 32%;
+            width: 100vw; /* Ocupa el 100% del ancho en dispositivos móviles */
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .card {
@@ -47,11 +48,7 @@
             overflow: hidden;
         }
 
-        .card-img-top {
-            width: 100%;
-            height: auto;
-        }
-
+        
         .card-body {
             padding: 20px;
         }
@@ -78,16 +75,24 @@
             margin-right: 10px;
         }
 
-        .btn:hover {
-            background-color: #0056b3;
-            text-decoration: none;
-        }
+            .btn:hover {
+                background-color: #0056b3;
+                text-decoration: none;
+            }
 
         .imgProducto {
-            height: 200px;
-            width: 200px;
+            width: 300px; /* Ajusta el ancho al 100% */
+            height: 300px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .col {
+                width: 100%; /* Ocupa el 100% del ancho en dispositivos móviles */
+                margin-bottom: 20px;
+            }
         }
     </style>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -100,7 +105,7 @@
                 <ItemTemplate>
                     <div class="col">
                         <div class="card">
-                            <img src="<%#Eval("UrlImagen") %>" class="card-img-top imgProducto mx-auto d-block" alt="Imagen del Producto">
+                            <img src="<%#Eval("UrlImagen") %>" class="imgProducto mx-auto d-block" alt="Imagen del Producto">
                             <div class="card-body">
                                 <h5 class="card-title"><%#Eval("Nombre") %></h5>
                                 <p class="card-text">Código: <%#Eval("Codigo") %></p>
@@ -110,7 +115,7 @@
                                 <p class="card-text">Precio: $<%#Eval("Precio", "{0:F2}") %></p>
                                 <a href="ProductoDetalle.aspx?id=<%#Eval("Id") %>" class="btn">Ver Detalle</a>
                                 <asp:Button ID="btnEliminarFav" CssClass="btn" runat="server" Text="❌"
-                                    CommandName="ArticuloId" CommandArgument='<%#Eval("Id") %>'  OnClick="btnEliminarFav_Click" />
+                                    CommandName="ArticuloId" CommandArgument='<%#Eval("Id") %>' OnClick="btnEliminarFav_Click" />
                             </div>
                         </div>
                     </div>
