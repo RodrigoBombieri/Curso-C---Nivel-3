@@ -29,17 +29,17 @@ namespace ecommerce_web
 
         public static string ObtenerIdUsuario()
         {
-            // Obtener el usuario de la sesión
+            // Obtengo el usuario de la sesión
             Usuario usuario = HttpContext.Current.Session["usuario"] as Usuario;
 
-            // Verificar si el usuario está autenticado
+            // Verifico si el usuario está logueado
             if (Seguridad.sesionActiva(usuario))
             {
-                // Si está autenticado, devuelve el ID del usuario
+                // Si está logueado, devuelve el ID del usuario
                 return usuario.Id.ToString();
             }
 
-            // Si el usuario no está autenticado o no hay información de usuario en la sesión,
+            // Si el usuario no está logueado o no hay información de usuario en la sesión,
             // devuelve una cadena vacía
             return string.Empty;
         }
